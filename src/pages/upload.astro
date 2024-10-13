@@ -4,37 +4,59 @@ import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
-import messengerIcon from "../assets/messenger-icon.svg";
-import instagramIcon from "../assets/instagram-icon.svg";
-import whatsappIcon from "../assets/whatsapp-icon.svg";
+import messengerIcon from "../assets/messenger-icon2.svg";
+import instagramIcon from "../assets/instagram-icon2.svg";
+import whatsappIcon from "../assets/whatsapp-icon2.svg";
 ---
 
 <Layout title="About | Chat Rewind">
   <main class="main">
-    <div class="card-container">
-      <Card title="Select your App" className="card">
-        <div class="flex justify-center gap-4 mb-6">
-          <Image src={messengerIcon} alt="Messenger" width={50} height={50} />
-          <Image src={instagramIcon} alt="Instagram" width={50} height={50} />
-          <Image src={whatsappIcon} alt="WhatsApp" width={50} height={50} />
-        </div>
-        <ol class="instruction-list">
-          <li>Open the chat you want</li>
-          <li>Tap More options &gt; More &gt; Export chat</li>
-          <li>Tap Include media</li>
-          <li>Download your files</li>
-        </ol>
-      </Card>
+    <div>
+      <div class="card-container">
+        <Card title="Select your App" className="card">
+          <div class="flex justify-center gap-4 mb-6">
+            <button class="app-button" id="messenger">
+              <Image
+                src={messengerIcon}
+                alt="Messenger"
+                width={70}
+                height={70}
+              />
+            </button>
+            <button class="app-button" id="instagram">
+              <Image
+                src={instagramIcon}
+                alt="Instagram"
+                width={70}
+                height={70}
+              />
+            </button>
+            <button class="app-button" id="whatsapp">
+              <Image src={whatsappIcon} alt="WhatsApp" width={70} height={70} />
+            </button>
+          </div>
+          <ol class="instruction-list">
+            <li>Open the chat you want</li>
+            <li>Tap More options &gt; More &gt; Export chat</li>
+            <li>Tap Include media</li>
+            <li>Download your files</li>
+          </ol>
+        </Card>
 
-      <Card title="Upload File(s)" className="card">
-        <div class="flex justify-center gap-4 mb-6">
-          <button class="btn btn-secondary btn-secondary:hover">Upload!</button>
-          <p>Want more insight into your chats? Try out AI summarizer!</p>
-          <button class="btn btn-tertiary">Summarize!</button>
-        </div>
-      </Card>
+        <Card title="Upload File(s)" className="card">
+          <div class="flex justify-center gap-4 mb-6">
+            <button class="btn btn-secondary btn-secondary:hover">
+              Upload!
+            </button>
+            <p>Want more insight into your chats? Try out AI summarizer!</p>
+            <button class="btn btn-tertiary">Summarize!</button>
+          </div>
+        </Card>
+      </div>
+      <div class="back-bttn">
+        <button class="btn btn-tertiary" id="backBttn">&lt;&lt;</button>
+      </div>
     </div>
-    <button class="btn btn-tertiary" id="backBttn">&lt;&lt;</button>
   </main>
 </Layout>
 
@@ -42,6 +64,18 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
   document.getElementById("backBttn").onclick = () => {
     window.location.href = "/";
   };
+
+  let selectedApp = null;
+  const appButtons = document.querySelectorAll(".app-button");
+
+  appButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      appButtons.forEach((btn) => btn.classList.remove("selected"));
+      button.classList.add("selected");
+      selectedApp = button.id;
+      console.log("Selected app:", selectedApp);
+    });
+  });
 </script>
 
 <style>
@@ -49,12 +83,12 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 2rem;
     justify-content: flex-start;
-    min-height: 100vh;
-    text-align: center;
+    margin-top: 10rem;
     padding: 2rem 1rem;
     font-family: monospace;
+    font-size: 1.25rem;
+    text-align: center;
   }
 
   .card-container {
@@ -78,6 +112,12 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
     flex-direction: column;
   }
 
+  .back-bttn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
   .btn {
     font-size: 1rem;
     font-weight: 600;
@@ -109,9 +149,23 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
   }
 
   .instruction-list {
-    list-style-position: outside;
-    padding-left: 1.5em;
-    margin-left: 0;
     text-align: left;
+  }
+  .app-button {
+    background: none;
+    border: 2px solid transparent;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+
+  .app-button:hover {
+    transform: scale(1.1);
+  }
+
+  .app-button.selected {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
   }
 </style>
