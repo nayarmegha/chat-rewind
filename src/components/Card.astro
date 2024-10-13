@@ -7,6 +7,7 @@ interface Props {
 const { title, className = "" } = Astro.props;
 ---
 
+<!-- If needed, this card component could be resued for the final data visualization page -->
 <div class={`card ${className}`}>
   <h2 class="title">{title}</h2>
   <slot />
