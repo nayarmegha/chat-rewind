@@ -7,18 +7,19 @@ import instagramIcon from "../assets/instagram-icon.svg";
 import whatsappIcon from "../assets/whatsapp-icon.svg";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="text-center">
+<Layout title="Welcome to CHAT R3WIND">
+  <main>
     <p>Welcome to</p>
-    <h1>CHAT R3WIND</h1>
-    <p class="about">
-      A Spotify-like wrapped for all your chats where your data never leaves
-      your browser.
+    <h1>CHAT R3WIND&lt;&lt;</h1>
+    <p>
+      A Spotify-like wrapped for all your chats where your data <span
+        class="highlight">never</span
+      > leaves your browser.
     </p>
 
     <div class="btn">
-      <button class="btn btn-primary"> Get Started </button>
-      <button class="btn btn-secondary"> Examples </button>
+      <button class="btn btn-primary" id="getStartedBtn">GET STARTED</button>
+      <button class="btn btn-secondary"> EXAMPLES </button>
     </div>
 
     <div class="flex justify-center space-x-6 icons">
@@ -29,24 +30,33 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
   </main>
 </Layout>
 
+<script>
+  document.getElementById("getStartedBtn").onclick = () => {
+    window.location.href = "/upload";
+  };
+</script>
+
 <style>
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 2rem;
-    justify-content: flex-start;
     min-height: 100vh;
     text-align: center;
     padding: 2rem 1rem;
-    background-color: #000000;
-    color: #ffffff;
+    font-family: monospace;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
   }
 
+  p {
+    font-size: 2rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
   h1 {
     font-size: 5rem;
     font-weight: bold;
-    margin-bottom: 1rem;
     background: #ffffff; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,13 +65,14 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
   .btn {
     display: flex;
     justify-content: center;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 500;
     padding: 0.75rem 1.5rem;
     border-radius: 9px;
     transition: all 0.3s ease;
-    text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin: 2rem;
+    font-family: monospace;
   }
 
   .btn:hover {
@@ -74,7 +85,7 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
   }
 
   .btn-primary:hover {
-    background-color: #14b8a6;
+    background-color: #0c776b;
   }
 
   .btn-secondary {
@@ -83,12 +94,21 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
   }
 
   .btn-secondary:hover {
-    background-color: #db2777;
+    background-color: #a2034b;
   }
 
   .icons {
     display: flex;
     justify-content: center;
     gap: 1rem;
+  }
+  .highlight {
+    background: linear-gradient(to right, #2dd4bf, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0 0.2em;
   }
 </style>
