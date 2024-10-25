@@ -1,0 +1,118 @@
+import fs from "node:fs";
+
+function convertToJson(splitData, isAndroid) {
+  let jsonData = [];
+  for (let i = 1; i < splitData.length; i++) {
+    // initializing each JSON
+    let eachjson = {
+      date: new Date(),
+      name: "",
+      content: {
+        text: "",
+        attach: "",
+        event: "",
+        reacts: 0,
+      },
+    };
+
+    let text = splitData[i];
+    if (!isAndroid) {
+      let datestring = text.substring(1, text.indexOf("]")).replace(",", "");
+      let simpleDate = new Date(datestring);
+
+      text = text.substring(text.indexOf("]") + 2);
+      let sender = text.substring(0, text.indexOf(":"));
+      text = text.substring(text.indexOf(":") + 2);
+
+      // Check for not video or voice call
+      if (
+        text.indexOf("Missed voice") != -1 ||
+        text.indexOf("Missed group") != -1 ||
+        text.indexOf("Missed video") != -1
+      ) {
+        eachjson["content"]["event"] = text;
+      } // Check for attachments
+      else if (text.indexOf("<attached:") != -1) {
+        let end = text.indexOf(">");
+        eachjson["content"]["attach"] = text.substring(
+          text.indexOf("<attached:") + 11,
+          end
+        );
+      } // Last case : simple text
+      else {
+        eachjson["content"]["text"] = text;
+      }
+
+      eachjson["date"] = simpleDate;
+      eachjson["name"] = sender;
+    } else {
+      let datestring = text
+        .substring(0, text.indexOf("-") - 1)
+        .replace(",", "");
+      let simpleDate = new Date(datestring);
+      text = text.substring(text.indexOf("-") + 2);
+      let sender = text.substring(0, text.indexOf(":"));
+      text = text.substring(text.indexOf(":") + 2);
+
+      // Check for not video or voice call
+      if (
+        text.indexOf("Missed voice") != -1 ||
+        text.indexOf("Missed video call") != -1
+      ) {
+        eachjson["content"]["event"] = text;
+      } // Check for attachments
+      else if (text.indexOf("(file attached)") != -1) {
+        let end = text.indexOf("(file attached)");
+        eachjson["content"]["attach"] = text.substring(0, end - 1);
+      } // Last case : simple text
+      else {
+        eachjson["content"]["text"] = text;
+      }
+
+      eachjson["date"] = simpleDate;
+      eachjson["name"] = sender;
+    }
+
+    jsonData.push(eachjson);
+  }
+  return jsonData;
+}
+
+function readAndWriteFile() {
+  fs.readFile("../assets/naan.txt", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    // removes [U+200E] character - default on whatsapp
+    let otherdata = data.replace(/\u200E/g, "");
+    otherdata = otherdata.replace(/\u202F/g, " ");
+    /* 
+        Using RegEx to pattern match and split for :
+        [mm/dd/yy, hh:mm:ss am/pm] <text>
+        Data can either be of the format [10/16/21, 1:16:36 AM] or 26 Sep 2014 14:43
+        */
+    let jsonData = null;
+    let splitfile = otherdata.match(
+      /\[\d{1,2}\/\d{1,2}\/\d{2,4}, \d{1,2}:\d{2}:\d{2}\s[AP]+M\] [^[]+/g
+    );
+
+    if (splitfile == null) {
+      splitfile = otherdata.match(
+        /\d{1,2}\/\d{1,2}\/\d{2,4}, \d{1,2}:\d{1,2} [AP]+M -[^0-9]+/gi
+      );
+      jsonData = convertToJson(splitfile, true);
+    } else {
+      jsonData = convertToJson(splitfile, false);
+    }
+
+    fs.writeFile("output.json", JSON.stringify(jsonData), (error) => {
+      if (error) {
+        console.log("An error has occurred ", error);
+        return;
+      }
+    });
+  });
+}
+
+readAndWriteFile();
