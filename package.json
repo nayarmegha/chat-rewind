@@ -10,6 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@zip.js/zip.js": "^2.7.52",
     "astro": "^4.15.10"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.1"
   }
 }
