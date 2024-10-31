@@ -80,7 +80,7 @@ function convertToJson(splitData: string[], isAndroid: boolean) {
     return jsonData
 }
 
-async function textToJson(fileblob: Blob) {
+export async function textToJson(fileblob: Blob) {
     let jsonblob = new Blob([])
 
     try {
