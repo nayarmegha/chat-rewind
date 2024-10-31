@@ -6,7 +6,6 @@ import {
   
 export async function unzip(zipFileBlob : Blob) {
 
-  console.log("GOT HERE")
   const targetFile = "_chat.txt"
   // Creates a BlobReader object used to read `zipFileBlob`.
   const zipFileReader = new BlobReader(zipFileBlob);

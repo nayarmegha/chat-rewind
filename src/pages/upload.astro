@@ -65,8 +65,8 @@ import whatsappIcon from "../assets/whatsapp-icon2.svg";
 </Layout>
 
 <script>
-  import {unzip} from "../scripts/unzip.js"
-
+  import {unzip} from "../scripts/unzip.ts"
+  import {textToJson} from "../scripts/textToJson.ts"
 
   document.getElementById("backBttn").onclick = () => {
     window.location.href = "/";
@@ -90,7 +90,7 @@ import whatsappIcon from "../assets/whatsapp-icon2.svg";
   const fileInput = document.getElementById("file-input") as HTMLInputElement;
   const fileInputButton = document.getElementById("file-input-button") as HTMLInputElement;
   fileInputButton.onclick = () => fileInput.dispatchEvent(new MouseEvent("click"));
-  let selectedFile;
+  let selectedFile : File;
   fileInput.onchange = selectFile;
 
   async function selectFile() {
@@ -98,7 +98,10 @@ import whatsappIcon from "../assets/whatsapp-icon2.svg";
 				fileInputButton.disabled = true;
 				selectedFile = fileInput.files[0];
         console.log(selectedFile)
-				await unzip(selectedFile);
+				const chatblob = await unzip(selectedFile)
+        const jsonblob = await textToJson(chatblob)
+        const data = await jsonblob.text()
+        console.log(data)
 			} catch (error) {
 				alert(error);
 			} finally {
