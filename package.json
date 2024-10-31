@@ -12,7 +12,8 @@
         "format-write": "prettier . --write"
     },
     "dependencies": {
-        "astro": "^4.15.10",
+        "@zip.js/zip.js": "^2.7.52",
+    "astro": "^4.15.10",
         "tsx": "^4.19.2"
     },
     "devDependencies": {
@@ -24,6 +25,7 @@
         "eslint-plugin-react": "^7.37.2",
         "globals": "^15.11.0",
         "prettier": "^3.3.3",
-        "typescript-eslint": "^8.12.2"
+        "typescript-eslint": "^8.12.2",
+         "tsx": "^4.19.1"
     }
 }
