@@ -6,7 +6,7 @@ import {
   
 export async function unzip(zipFileBlob : Blob) {
 
-  const targetFile = "_chat.txt"
+  const targetFileExtension = "txt"
   // Creates a BlobReader object used to read `zipFileBlob`.
   const zipFileReader = new BlobReader(zipFileBlob);
   // Creates a TextWriter object where the content of the first entry in the zip
@@ -18,8 +18,11 @@ export async function unzip(zipFileBlob : Blob) {
   // content via `helloWorldWriter`, and closes the reader.
   const zipReader = new ZipReader(zipFileReader);
   const allEntries = (await zipReader.getEntries());
-  const chatFile = allEntries.find ((data) => data.filename == targetFile)
-  
+  console.log(allEntries)
+  const chatFile = allEntries.find((data) => data.filename.split('.').pop() == targetFileExtension)
+  console.log(chatFile)
+
+
   const chatData = await chatFile.getData(textWriter);
   await zipReader.close();
   const chatblob = new Blob([chatData], {
