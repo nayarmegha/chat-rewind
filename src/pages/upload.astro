@@ -3,10 +3,10 @@
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-
 import messengerIcon from "../assets/messenger-icon2.svg";
 import instagramIcon from "../assets/instagram-icon2.svg";
 import whatsappIcon from "../assets/whatsapp-icon2.svg";
+
 ---
 
 <Layout title="About | Chat Rewind">
@@ -45,13 +45,17 @@ import whatsappIcon from "../assets/whatsapp-icon2.svg";
 
         <Card title="Upload File(s)" className="card">
           <div class="flex justify-center gap-4 mb-6">
-            <button class="btn btn-secondary btn-secondary:hover">
+            <!-- upload zip -->
+            <button id="file-input-button" class="btn btn-secondary btn-secondary:hover">
               Upload!
             </button>
+            <input type="file" id="file-input" accept="application/zip" hidden>
+            
             <p>Want more insight into your chats? Try out AI summarizer!</p>
             <button class="btn btn-tertiary">Summarize!</button>
           </div>
         </Card>
+
       </div>
       <div class="back-bttn">
         <button class="btn btn-tertiary" id="backBttn">&lt;&lt;</button>
@@ -61,9 +65,13 @@ import whatsappIcon from "../assets/whatsapp-icon2.svg";
 </Layout>
 
 <script>
+  import {unzip} from "../scripts/unzip.ts"
+  import {textToJson} from "../scripts/textToJson.ts"
+
   document.getElementById("backBttn").onclick = () => {
     window.location.href = "/";
   };
+
   // Implementing a simple app selection and console logging the selected app
   // This should work instead of using a form - state of the selected app is saved and is "circled" in the UI when selected.
   let selectedApp = null;
@@ -77,6 +85,33 @@ import whatsappIcon from "../assets/whatsapp-icon2.svg";
       console.log("Selected app:", selectedApp);
     });
   });
+
+  
+  const fileInput = document.getElementById("file-input") as HTMLInputElement;
+  const fileInputButton = document.getElementById("file-input-button") as HTMLInputElement;
+  fileInputButton.onclick = () => fileInput.dispatchEvent(new MouseEvent("click"));
+  let selectedFile : File;
+  fileInput.onchange = selectFile;
+
+  async function selectFile() {
+			try {
+				fileInputButton.disabled = true;
+				selectedFile = fileInput.files[0];
+        console.log(selectedFile)
+				const chatblob = await unzip(selectedFile)
+        const jsonblob = await textToJson(chatblob)
+        const data = await jsonblob.text()
+        console.log(data)
+			} catch (error) {
+				alert(error);
+			} finally {
+				fileInputButton.disabled = false;
+				fileInput.value = "";
+			}
+		}
+
+  
+
 </script>
 
 <style>
