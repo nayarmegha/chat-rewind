@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StatCard from "../components/StatCard.astro";
+---
+
+<Layout title="Rewind">
+  <main>
+    <p>Here's your rewind with</p>
+    <h1>NANDANA</h1>
+    <StatCard desc="You texted a total of" stat="32 DAYS"/>
+  </main>
+</Layout>
+
+<script>
+  
+</script>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-family: monospace;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  p {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+  h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    background: #ffffff; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+    margin: 2rem;
+    font-family: monospace;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-primary {
+    background-color: #2dd4bf;
+  }
+
+  .btn-primary:hover {
+    background-color: #0c776b;
+  }
+
+  .btn-secondary {
+    background-color: #ec4899;
+    color: #ffffff;
+  }
+
+  .btn-secondary:hover {
+    background-color: #a2034b;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .highlight {
+    background: linear-gradient(to right, #2dd4bf, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0 0.2em;
+  }
+</style>
