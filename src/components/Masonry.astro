@@ -1,22 +1,22 @@
 ---
-import StatCard from "./StatCard.astro";
+import StatCard from "./StatCard/StatCard.tsx";
 
 ---
 <div class="masonry-container">
     <div class="card-container">
-        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS"/>
-        <StatCard desc="who replies faster?" number="93" stat="NANDANA"/>
-        <StatCard desc="your longest conversation lasted" number="5" stat="HOURS"/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+    </div> 
+    <div class="card-container">
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
     </div>
     <div class="card-container">
-        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS"/>
-        <StatCard desc="who replies faster?" number="93" stat="NANDANA"/>
-        <StatCard desc="your longest conversation lasted" number="5" stat="HOURS"/>
-    </div>
-    <div class="card-container">
-        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS"/>
-        <StatCard desc="who replies faster?" number="93" stat="NANDANA"/>
-        <StatCard desc="your longest conversation lasted" number="5" stat="HOURS"/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
+        <StatCard desc="you texted each other for a total of" number="93" stat="DAYS" client:load/>
     </div>
 </div>
 
