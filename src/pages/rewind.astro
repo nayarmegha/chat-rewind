@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import StatCard from "../components/StatCard.astro";
+import Masonry from "../components/Masonry.astro";
 ---
 
 <Layout title="Rewind">
   <main>
     <p>Here's your rewind with</p>
     <h1>NANDANA</h1>
-    <StatCard desc="You texted a total of" stat="32 DAYS"/>
+    <Masonry/>
   </main>
 </Layout>
 
@@ -17,8 +17,6 @@ import StatCard from "../components/StatCard.astro";
 
 <style>
   main {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     text-align: center;
@@ -26,6 +24,7 @@ import StatCard from "../components/StatCard.astro";
     font-family: monospace;
     margin-bottom: 1rem;
     margin-top: 2rem;
+    border-radius: 2rem;
   }
 
   p {
@@ -36,7 +35,7 @@ import StatCard from "../components/StatCard.astro";
   h1 {
     font-size: 5rem;
     font-weight: bold;
-    background: #ffffff; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
+    background: #FBFEF2; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

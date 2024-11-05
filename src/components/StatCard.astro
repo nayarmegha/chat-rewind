@@ -7,7 +7,6 @@ interface Props {
 const { desc, stat } = Astro.props;
 ---
 
-<!-- If needed, this card component could be resued for the final data visualization page -->
 <div class="card">
   <h3>{desc}</h3>
   <h1>{stat}</h1>
@@ -15,15 +14,21 @@ const { desc, stat } = Astro.props;
 
 <style>
   .card {
-    background-color: #000000;
+    background-color: #08001A;
     border-radius: 1rem;
-    border: 0.2rem solid #ffffff;
+    border: 0.2rem solid #FBFEF2;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
   }
+  @media (max-width:700px)
+    {
+    .card {
+        width: 100%;
+        }
+    }
 
   .title {
-    color: #ffffff;
+    color: #FBFEF2;
   }
 </style>

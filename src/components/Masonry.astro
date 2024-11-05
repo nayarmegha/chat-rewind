@@ -1,0 +1,53 @@
+---
+import StatCard from "./StatCard.astro";
+
+---
+<div class="masonry-container">
+    <div class="card-container">
+        <StatCard desc="you texted each other for a total of" stat="93 DAYS dfjsdkfjl skjfwf sdfdfsdfsfsfsk djfslkf sfldsfsd fedsfsdffs"/>
+        <StatCard desc="who replies faster?" stat="NANDANA"/>
+        <StatCard desc="your longest conversation lasted" stat="5 HOURS"/>
+      </div>
+      <div class="card-container">
+        <StatCard desc="you texted each other for a total of" stat="93 DAYS"/>
+        <StatCard desc="who replies faster?" stat="NANDf dsfsdANA"/>
+        <StatCard desc="your longest conversation lasted" stat=" HOURS"/>
+      </div>
+      <div class="card-container">
+        <StatCard desc="you texted each other for a total of" stat="93 df sd fsdfD dfds ffsdfAYS"/>
+        <StatCard desc="who replies faster?" stat="NANDANA"/>
+        <StatCard desc="your longest conversation lasted" stat="5 Hdfsdf sdfsd fdfdf OURS"/>
+      </div>
+</div>
+
+<style>
+    .masonry-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        /* border: 0.2rem solid #9bc754; */
+        justify-content: center;
+    }
+
+  .card-container {
+    background-color: #08001A;
+    border-radius: 1rem;
+    /* border: 0.2rem solid #ff9900; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 33%;
+  }
+
+    @media (max-width:700px) {
+    .masonry-container {
+        flex-direction:column;
+        align-items: center;
+        }
+
+    .card-container {
+        width: 90%;
+        align-items: center;
+        }
+    }
+</style>
