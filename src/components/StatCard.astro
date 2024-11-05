@@ -1,18 +1,38 @@
 ---
+import retrostripes from '../assets/retrostripes.svg'
 interface Props {
   desc : string,
+  number : string,
   stat : string
 }
 
-const { desc, stat } = Astro.props;
+const { desc, number, stat  } = Astro.props;
 ---
 
 <div class="card">
   <h3>{desc}</h3>
-  <h1>{stat}</h1>
+  <h1 class="number">{number}</h1>
+  <h1 class="stat">{stat}</h1>
 </div>
 
 <style>
+  h3 {
+    text-align: left;
+  }
+  .number {
+    text-align: left;
+    font-size: 5rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+  }
+  .stat {
+    text-align: left;
+    font-size: 2.5rem;
+    color: #E52082;
+    margin: 0;
+    padding: 0;
+  }
   .card {
     background-color: #08001A;
     border-radius: 1rem;
