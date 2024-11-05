@@ -12,7 +12,7 @@ const StatCard:React.FC<StatCardProps> = ({desc, number, stat}) => {
   return (
     <div className={styles['card']}>
       <div className={styles['card-left']}>
-        <h3>{desc}</h3>
+        <h3 className={styles['desc']}>{desc}</h3>
         <h1 className={styles['number']}>{number}</h1>
         <h1 className={styles['stat']}>{stat}</h1>
       </div>
