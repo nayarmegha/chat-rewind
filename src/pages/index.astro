@@ -10,7 +10,7 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
 <Layout title="Welcome to CHAT R3WIND">
   <main>
     <p>Welcome to</p>
-    <h1>CHAT R3WIND&lt;&lt;</h1>
+    <h1 class="hero layers vt323-regular" data-text="CHAT R3WIND&lt;&lt;">CHAT R3WIND&lt;&lt;</h1>
     <p>
       A Spotify-like wrapped for all your chats where your data <span
         class="highlight">never</span
@@ -37,6 +37,42 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
 </script>
 
 <style>
+
+/* Layered Effect for Title */
+
+h1 {
+  font-size: 10rem;
+  margin: 0;
+}
+
+.layers {
+  position: relative;
+}
+
+.layers::before,
+.layers::after {
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.layers::before {
+  top: -0px;
+  left: -5px;
+  color: #E52082;
+}
+
+.layers::after {
+  top: 0;
+  left: 5px;
+  color: #25DEC0;
+}
+
+
+/* Other Stuff */
+
+
   main {
     display: flex;
     flex-direction: column;
@@ -54,14 +90,18 @@ import whatsappIcon from "../assets/whatsapp-icon.svg";
     margin-left: 10rem;
     margin-right: 10rem;
   }
-  h1 {
-    font-size: 5rem;
+
+  /* h1 {
+    font-size: 10rem;
     font-weight: bold;
-    background: #ffffff; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
+    background: #ffffff; linear-gradient(to right, #2dd4bf, #ec4899);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
+    margin: 0;
+  } 
+  */
+
   .btn {
     display: flex;
     justify-content: center;
