@@ -1,6 +1,6 @@
 import styles from './StatCard.module.css'
 import retro from '../../assets/retrostripes.svg'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 interface StatCardProps {
   desc : string, 
@@ -9,6 +9,12 @@ interface StatCardProps {
 }
 
 const StatCard:React.FC<StatCardProps> = ({desc, number, stat}) => {
+  
+  useEffect (() => {
+    const jsonblob = window.sessionStorage.getItem('message_json')
+    
+  }, [])
+
   return (
     <div className={styles['card']}>
       <div className={styles['card-left']}>
