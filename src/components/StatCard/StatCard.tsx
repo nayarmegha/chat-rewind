@@ -13,30 +13,33 @@ interface jsonData {
   }
 }
 
-const StatCard:React.FC = () => {
+const StatCard = () => {
 
   const [jsonData, setJsonData] = useState<[jsonData] | null>(null)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [texts, setTexts] = useState<number>(0)
 
   const totalMessagesThisYear = () => {
-    if (!isLoaded) {
+    if (!jsonData) {
       return 0
     }
-    return console.log(jsonData.length)
+    
+    // script to find number of messages sent this year
+    for (const key in jsonData) {
+      
+    }
+    setIsLoaded(true)
   }
 
   useEffect (() => {
     const blob = window.sessionStorage.getItem('message_json')
     const jsonblob = JSON.parse(blob)
-    // console.log(jsonblob)
-    // console.log(jsonblob && !isLoaded)
-    if (jsonblob && !isLoaded) {
+
+    if (!isLoaded && jsonblob) {
       setJsonData(jsonblob)
-      setIsLoaded(true)
       totalMessagesThisYear()
     }
-  }, [])
+  }, [jsonData])
 
   return (
     <div className={styles['card']}>
