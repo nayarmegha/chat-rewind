@@ -23,11 +23,16 @@ const StatCard = () => {
     if (!jsonData) {
       return 0
     }
-    
+    const year = 2024
+    let count = 0
     // script to find number of messages sent this year
     for (const key in jsonData) {
-      
+      const date = new Date(jsonData[key]['date'])
+      if (date.getFullYear() === year) {
+        count +=1
+      }
     }
+    setTexts(count)
     setIsLoaded(true)
   }
 
