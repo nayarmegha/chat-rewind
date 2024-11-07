@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
-import type { Chat, OptimizedMessage } from '../scripts/jsonToLLM';
+import type { Chat } from '../scripts/jsonToLLM';
 import { optimizeChatsForLLM } from '../scripts/jsonToLLM';
 import { textToJson } from '../scripts/textToJson';
 import { unzip } from '../scripts/unzip';
-import {
-  BlobReader,
-  TextWriter,
-  ZipReader,
-} from "@zip.js/zip.js";
 
 const Summarizer: React.FC = () => {
   const [summary, setSummary] = useState('');
@@ -16,7 +11,6 @@ const Summarizer: React.FC = () => {
   const [progress, setProgress] = useState('');
   const [batchProgress, setBatchProgress] = useState('');
   const engineRef = useRef<any>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     initEngine();
@@ -73,9 +67,7 @@ const Summarizer: React.FC = () => {
       setSummary('Error processing file. Please ensure you uploaded a valid WhatsApp chat export ZIP file.');
     } finally {
       setIsLoading(false);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
+      e.target.value = ''; // Reset file input
     }
   };
 
@@ -123,27 +115,16 @@ const Summarizer: React.FC = () => {
     }
   };
 
-  const handleUploadClick = () => {
-    fileInputRef.current?.click();
-  };
-
   return (
     <div className="flex flex-col flex-grow overflow-hidden">
       <div className="mb-4 text-center">
         <input
           type="file"
-          ref={fileInputRef}
           onChange={handleFileSelect}
           accept="application/zip"
-          className="hidden"
-        />
-        <button
-          onClick={handleUploadClick}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300 cursor-pointer"
           disabled={isLoading}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
-        >
-          Upload File
-        </button>
+        />
         <p className="mt-2 text-sm text-gray-600">
           Please upload a WhatsApp chat export ZIP file
         </p>
