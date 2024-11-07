@@ -12,6 +12,8 @@
         "format-write": "prettier . --write"
     },
     "dependencies": {
+        "@astrojs/react": "^3.6.2",
+        "@mlc-ai/web-llm": "^0.2.74",
         "@zip.js/zip.js": "^2.7.53",
         "astro": "^4.15.10",
         "react": "^18.3.1",

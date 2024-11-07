@@ -3,14 +3,20 @@ import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import type { Chat, OptimizedMessage } from '../scripts/jsonToLLM';
 import { optimizeChatsForLLM } from '../scripts/jsonToLLM';
 import { textToJson } from '../scripts/textToJson';
+import { unzip } from '../scripts/unzip';
+import {
+  BlobReader,
+  TextWriter,
+  ZipReader,
+} from "@zip.js/zip.js";
 
 const Summarizer: React.FC = () => {
-  const [input, setInput] = useState('');
   const [summary, setSummary] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState('');
   const [batchProgress, setBatchProgress] = useState('');
   const engineRef = useRef<any>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     initEngine();
@@ -38,24 +44,49 @@ const Summarizer: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+    
     setIsLoading(true);
     setSummary('');
     setBatchProgress('');
+    setProgress('Processing file...');
 
+    const selectedFile = e.target.files[0];
+
+    try {
+      // Process the uploaded ZIP file
+      setProgress('Extracting chat data from ZIP...');
+      const chatBlob = await unzip(selectedFile);
+      
+      setProgress('Converting chat to JSON...');
+      const jsonBlob = await textToJson(chatBlob);
+      
+      const jsonData = await jsonBlob.text();
+      const chatData: Chat[] = JSON.parse(jsonData);
+      
+      setProgress('Generating summary...');
+      await generateSummary(chatData);
+      
+    } catch (error) {
+      console.error('Error processing file:', error);
+      setSummary('Error processing file. Please ensure you uploaded a valid WhatsApp chat export ZIP file.');
+    } finally {
+      setIsLoading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  const generateSummary = async (chatData: Chat[]) => {
     const systemPrompt = {
       role: 'system',
       content: 'You are a chat summarizer. Given a file containing whatsapp data, provide a summary of the conversation. Make the summary stuctured like a story of the input conversation. Give the summary inside the JSON object like {"title": "...", "summary": "...", "highlights": ["...", "..."]}'
     };
 
     try {
-      // Parse input JSON and optimize
-      const chatData: Chat[] = JSON.parse(input);
       const optimizedBatches = optimizeChatsForLLM(chatData);
-      
       // Process each batch
       const allSummaries = [];
       for (let i = 0; i < optimizedBatches.length; i++) {
@@ -74,7 +105,6 @@ const Summarizer: React.FC = () => {
         const summaryObj = JSON.parse(response.choices[0].message.content);
         allSummaries.push(summaryObj);
       }
-
       // Combine summaries if there were multiple batches
       if (allSummaries.length > 1) {
         const combinedSummary = {
@@ -87,34 +117,37 @@ const Summarizer: React.FC = () => {
       } else {
         setSummary(JSON.stringify(allSummaries[0], null, 2));
       }
-      
     } catch (error) {
       console.error('Error generating summary:', error);
-      setSummary('Error generating summary. Please ensure valid JSON input and try again.');
-    } finally {
-      setIsLoading(false);
-      setBatchProgress('');
+      setSummary('Error generating summary. Please try again.');
     }
+  };
+
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
   };
 
   return (
     <div className="flex flex-col flex-grow overflow-hidden">
-      <form onSubmit={handleSubmit} className="mb-4">
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="w-full p-2 border rounded h-40 mb-2"
-          placeholder="Paste your JSON here..."
-          disabled={isLoading}
+      <div className="mb-4 text-center">
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileSelect}
+          accept="application/zip"
+          className="hidden"
         />
         <button
-          type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
+          onClick={handleUploadClick}
           disabled={isLoading}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
         >
-          Summarize JSON
+          Upload File
         </button>
-      </form>
+        <p className="mt-2 text-sm text-gray-600">
+          Please upload a WhatsApp chat export ZIP file
+        </p>
+      </div>
       <div className="flex-grow overflow-y-auto p-2 border rounded">
         <h2 className="text-xl font-bold mb-2">Summary:</h2>
         {isLoading ? (

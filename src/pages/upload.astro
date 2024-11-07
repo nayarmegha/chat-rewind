@@ -1,5 +1,5 @@
 ---
-// HowTo.astro
+// upload.astro
 import Card from '../components/Card.astro'
 import Layout from '../layouts/Layout.astro'
 import { Image } from 'astro:assets'
@@ -67,7 +67,9 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
                             Want more insight into your chats? Try out AI
                             summarizer!
                         </p>
-                        <button class="btn btn-tertiary">Summarize!</button>
+                        <button class="btn btn-tertiary" id="summarizerBttn"
+                            >Summarize!</button
+                        >
                     </div>
                 </Card>
             </div>
@@ -84,6 +86,9 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
 
     document.getElementById('backBttn').onclick = () => {
         window.location.href = '/'
+    }
+    document.getElementById('summarizerBttn').onclick = () => {
+        window.location.href = '/summarizer'
     }
 
     // Implementing a simple app selection and console logging the selected app
