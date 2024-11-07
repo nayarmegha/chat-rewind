@@ -49,7 +49,7 @@ const StatCard = () => {
   return (
     <div className={styles['card']}>
       <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>you sent</h3>
+        <h3 className={styles['desc']}>you sent each other</h3>
         <h1 className={styles['number']}>{texts}</h1>
         <h1 className={styles['stat']}>messages this year</h1>
       </div>
