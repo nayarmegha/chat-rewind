@@ -1,0 +1,53 @@
+---
+import StatCard from "./StatCard/StatCard.tsx";
+
+---
+<div class="masonry-container">
+    <div class="card-container">
+        <StatCard client:load/>
+        <StatCard client:load/>
+        <StatCard client:load/>
+    </div> 
+    <div class="card-container">
+        <StatCard client:load/>
+        <StatCard client:load/>
+        <StatCard client:load/>
+    </div> 
+    <div class="card-container">
+        <StatCard client:load/>
+        <StatCard client:load/>
+        <StatCard client:load/>
+    </div> 
+</div>
+
+<style>
+    .masonry-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        /* border: 0.2rem solid #9bc754; */
+        justify-content: center;
+    }
+
+  .card-container {
+    background-color: #08001A;
+    border-radius: 1rem;
+    /* border: 0.2rem solid #ff9900; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 33%;
+  }
+
+    @media (max-width:700px) {
+    .masonry-container {
+        flex-direction:column;
+        align-items: center;
+        }
+
+    .card-container {
+        width: 90%;
+        align-items: center;
+        }
+    }
+</style>
