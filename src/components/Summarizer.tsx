@@ -1,8 +1,8 @@
-// Summarizer.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import type { Chat, OptimizedMessage } from '../scripts/jsonToLLM';
 import { optimizeChatsForLLM } from '../scripts/jsonToLLM';
+import { textToJson } from '../scripts/textToJson';
 
 const Summarizer: React.FC = () => {
   const [input, setInput] = useState('');
