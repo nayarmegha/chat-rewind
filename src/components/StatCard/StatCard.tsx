@@ -1,4 +1,4 @@
-import styles from './StatCard.module.css'
+import styles from './StatCard.module.scss'
 import retro from '../../assets/retrostripes.svg'
 import React, { useEffect, useState } from 'react'
 

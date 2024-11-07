@@ -1,0 +1,58 @@
+
+.desc {
+    text-align: left
+}
+
+.number {
+    text-align: left;
+    font-size: 5rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+}
+.stat {
+    text-align: left;
+    font-size: 2.5rem;
+    color: #E52082;
+    margin: 0;
+    padding: 0;
+}
+.card {
+    background-color: #08001A;
+    border-radius: 1rem;
+    border: 0.2rem solid #FBFEF2;
+    display: flex;
+} 
+.card-left {
+    /* border: 0.1rem solid #a9cc3f; */
+    padding: 1.5rem;
+}
+.card-right {
+    /* border: 0.1rem solid #a9cc3f; */
+    margin-right: 1rem;
+}
+.title {
+    color: #FBFEF2;
+}
+
+/* Container Div */
+.dotsbackground {
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle, #ffffff 20%, transparent 20%) 0 0, 
+                radial-gradient(circle, #ffffff 20%, transparent 20%) 5px 5px;
+    background-size: 20px 20px;
+    position: relative;
+    animation: pulse 3s infinite ease-in-out;
+  }
+  
+  /* Animation for growing and shrinking the dots */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1); /* Start and end at normal size */
+    }
+    50% {
+      transform: scale(1.5); /* Grow the dots */
+    }
+  }
+  
