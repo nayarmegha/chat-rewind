@@ -23,14 +23,18 @@ const StatCard = () => {
     if (!jsonData) {
       return 0
     }
-    const year = 2024
+    console.log('are you here')
+    const endDate = new Date(jsonData[jsonData.length - 1]['date'])
     let count = 0
     // script to find number of messages sent this year
     for (const key in jsonData) {
       const date = new Date(jsonData[key]['date'])
-      if (date.getFullYear() === year) {
-        count +=1
+      const diffInDays = Math.round((endDate.getTime() - date.getTime()) / (1000*60*60*24));
+      if (diffInDays <= 365) {
+        count += 1 
+        // console.log(diffInDays)
       }
+
     }
     setTexts(count)
     setIsLoaded(true)
