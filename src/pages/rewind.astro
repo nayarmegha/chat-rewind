@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Masonry from "../components/Masonry.astro";
+import Names from "../components/Names/Names";
 ---
 
 <Layout title="Rewind">
   <main>
-    <p>Here's your rewind with</p>
-    <h1>NANDANA</h1>
+    <p>Let's Rewind!</p>
+    <Names client:load/>
     <Masonry/>
   </main>
 </Layout>
