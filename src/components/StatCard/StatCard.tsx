@@ -2,30 +2,16 @@ import styles from './StatCard.module.css'
 import retro from '../../assets/retrostripes.svg'
 import React, { useEffect, useState } from 'react'
 
-interface jsonData {
-  name : string,
-  date : Date,
-  content : {
-    attach : string,
-    text : string,
-    event : string,
-    react : number
-  }
-}
-
 const StatCard = () => {
 
-  const [jsonData, setJsonData] = useState<[jsonData] | null>(null)
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  // const [jsonData, setJsonData] = useState<[jsonData] | null>(null)
   const [texts, setTexts] = useState<number>(0)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
-  const totalMessagesThisYear = () => {
-    if (!jsonData) {
-      return 0
-    }
-    console.log('are you here')
+  const totalMessagesThisYear = (jsonData) => {
     const endDate = new Date(jsonData[jsonData.length - 1]['date'])
     let count = 0
+
     // script to find number of messages sent this year
     for (const key in jsonData) {
       const date = new Date(jsonData[key]['date'])
@@ -36,19 +22,21 @@ const StatCard = () => {
       }
 
     }
-    setTexts(count)
+ 
     setIsLoaded(true)
+    setTexts(count)
   }
 
   useEffect (() => {
     const blob = window.sessionStorage.getItem('message_json')
     const jsonblob = JSON.parse(blob)
 
-    if (!isLoaded && jsonblob) {
-      setJsonData(jsonblob)
-      totalMessagesThisYear()
-    }
-  }, [jsonData])
+    totalMessagesThisYear(jsonblob)
+  }, [])
+
+  if (!isLoaded) {
+    return <div></div>
+  }
 
   return (
     <div className={styles['card']}>
