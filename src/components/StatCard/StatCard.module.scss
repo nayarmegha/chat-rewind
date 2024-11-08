@@ -1,6 +1,7 @@
 
 .desc {
-    text-align: left
+    text-align: left;
+    font-size: 1.5rem;
 }
 
 .number {
@@ -35,24 +36,107 @@
     color: #FBFEF2;
 }
 
-/* Container Div */
-.dotsbackground {
+$dots: rgb(23, 33, 38);
+$back: white;
+
+.benday {  
+    display: flex;
+    overflow: hidden;
+
+    height: 100%;
     width: 100%;
-    height: 100vh;
-    background: radial-gradient(circle, #ffffff 20%, transparent 20%) 0 0, 
-                radial-gradient(circle, #ffffff 20%, transparent 20%) 5px 5px;
-    background-size: 20px 20px;
-    position: relative;
-    animation: pulse 3s infinite ease-in-out;
-  }
-  
-  /* Animation for growing and shrinking the dots */
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1); /* Start and end at normal size */
+    // border-radius: 50%;
+    // transform: rotate(30deg) ;
+    
+   
+    // @mixin rad-grad($mark) {
+    //   radial-gradient()
+    // }
+    // $back-image: ();
+    //     @for $i from 1 through 5 {
+    //       $back-image: append($back-image, rad-grad($i), $separator:comma);
+    //   }
+    $back-pos: ();
+         @for $i from 0 through 13 {
+          $back-pos: append($back-pos, (($i * 4) + vh) 0, $separator:comma);
+      }
+    
+    
+    
+    background-image:
+      radial-gradient(
+        circle,
+        $dots 85%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 80%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 75%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 70%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 65%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 60%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 55%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 50%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 45%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 40%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 35%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 30%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 25%,
+        transparent 0
+        ),
+      radial-gradient(
+        circle,
+        $dots 20%,
+        transparent 0
+        );  
+   
+    background-size: 4vh 4vh;
+    background-repeat: repeat-y;
+    
+    background-position: $back-pos;
     }
-    50% {
-      transform: scale(1.5); /* Grow the dots */
-    }
-  }
-  

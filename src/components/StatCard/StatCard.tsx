@@ -37,13 +37,16 @@ const StatCard = () => {
 
   return (
     <div className={styles['card']}>
-      <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>you sent each other</h3>
-        <h1 className={styles['number']}>{texts}</h1>
-        <h1 className={styles['stat']}>messages this year</h1>
-      </div>
-      <div className={styles['card-right']}>
-        <img src={retro.src} alt='retro'/>
+      <div className={styles['benday']}>
+        <div className={styles['card-left']}>
+          <h3 className={styles['desc']}>You sent each other...</h3>
+          <h1 className={styles['number']}>{texts}</h1>
+          <h1 className={styles['stat']}>messages this year</h1>
+          <h3 className={styles['desc']}>an average of {(texts / 365).toFixed(2)}/day</h3>
+        </div>
+        <div className={styles['card-right']}>
+          <img src={retro.src} alt='retro'/>
+        </div>
       </div>
     </div>
    
