@@ -9,7 +9,7 @@ const StatCard = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   const totalMessagesThisYear = (jsonData) => {
-    const endDate = new Date(jsonData[jsonData.length - 1]['date'])
+    const endDate = new Date()
     let count = 0
 
     // script to find number of messages sent over a past year
