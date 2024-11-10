@@ -10,8 +10,6 @@
 
 .names-container {
   margin : 0;
-  border: #f30000;
-  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
