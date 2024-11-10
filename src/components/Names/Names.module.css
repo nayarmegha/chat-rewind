@@ -1,8 +1,17 @@
-.hero {
+.name {
   font-size: 4rem;
   margin: 0;
   color: #fff;
   letter-spacing: 10px;
+
+  /* Bright things in dark environments usually cast that light, giving off a glow */
+  filter: drop-shadow(0 1px 3px);
+}
+
+.subtext {
+  font-size: 2rem;
+  margin: 0;
+  color: #fff;
 
   /* Bright things in dark environments usually cast that light, giving off a glow */
   filter: drop-shadow(0 1px 3px);

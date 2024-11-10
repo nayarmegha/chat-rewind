@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import styles from "./Names.module.scss"
+import styles from "./Names.module.css"
 const Names = () => {
 
   const [names, setNames] = useState([])
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [lastName, setLastName] = useState("")
 
   const getNames = (jsonData) => {
     let allnames = []
@@ -15,7 +16,9 @@ const Names = () => {
       }
     }
     setIsLoaded(true)
+    const last = allnames.pop()
     setNames(allnames)
+    setLastName(last)
   }
 
   useEffect (() => {
@@ -30,14 +33,15 @@ const Names = () => {
   }
 
   return (
-    names.map ((item) => {
-      return (
-        <div className={styles['names-container']}>
-          <h2 className={styles['hero']}>{item}</h2>
-        </div>
-        
+    <div className={styles['names-container']}>
+       {names.map ((item) => {
+        return (
+          <h2 className={styles['name']}>{item}</h2>
       )
-    })
+    })}
+    <h3 className={styles['subtext']}>and</h3>
+    <h2 className={styles['name']}>{lastName}</h2>
+    </div>
   )
 }
 
