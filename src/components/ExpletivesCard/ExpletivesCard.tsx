@@ -12,6 +12,8 @@ const ExpletivesCard = () => {
     'shoot': 0,
     'crap': 0,
     'wtf': 0,
+    'fuck' : 0,
+    'shit' : 0
   };
 
   const findMostUsedExpletive = (jsonData) => {
