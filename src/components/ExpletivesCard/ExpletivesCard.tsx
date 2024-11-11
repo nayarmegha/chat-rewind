@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import retro from '../../assets/retrostripes.svg';
 import styles from './ExpletivesCard.module.css';
 
 const ExpletivesCard = () => {
@@ -12,6 +11,7 @@ const ExpletivesCard = () => {
     'hell': 0,
     'shoot': 0,
     'crap': 0,
+    'wtf': 0,
   };
 
   const findMostUsedExpletive = (jsonData) => {
@@ -64,9 +64,6 @@ const ExpletivesCard = () => {
         <h3 className={styles['desc']}>most used expletive</h3>
         <h1 className={styles['number']}>{topExpletive.word}</h1>
         <h1 className={styles['stat']}>used {topExpletive.count} times</h1>
-      </div>
-      <div className={styles['card-right']}>
-        <img src={retro.src} alt='retro'/>
       </div>
     </div>
   );

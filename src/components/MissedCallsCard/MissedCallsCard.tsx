@@ -1,5 +1,4 @@
 import styles from './MissedCallsCard.module.css'
-import retro from '../../assets/retrostripes.svg'
 import React, { useEffect, useState } from 'react'
 
 const MissedCallsCard = () => {
@@ -60,10 +59,7 @@ const MissedCallsCard = () => {
             <h2 className={styles['stat']}>video calls</h2>
           </div>
         </div>
-      </div>
-      <div className={styles['card-right']}>
-        <img src={retro.src} alt='retro'/>
-      </div>
+      </div>     
     </div>
   )
 }
