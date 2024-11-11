@@ -44,7 +44,11 @@ const ExpletivesCard = () => {
       }
     }
 
-    setTopExpletive({ word: maxWord, count: maxCount });
+     if (maxCount === 0) {
+      setTopExpletive({ word: 'No expletives in chat', count: 0 });
+    } else {
+      setTopExpletive({ word: maxWord, count: maxCount });
+    }
     setIsLoaded(true);
   };
 
@@ -63,7 +67,9 @@ const ExpletivesCard = () => {
       <div className={styles['card-left']}>
         <h3 className={styles['desc']}>most used expletive</h3>
         <h1 className={styles['number']}>{topExpletive.word}</h1>
-        <h1 className={styles['stat']}>used {topExpletive.count} times</h1>
+        {topExpletive.count > 0 && (
+          <h1 className={styles['stat']}>used {topExpletive.count} times</h1>
+        )}
       </div>
     </div>
   );
