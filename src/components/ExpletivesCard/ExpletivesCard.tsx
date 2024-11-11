@@ -16,20 +16,13 @@ const ExpletivesCard = () => {
 
   const findMostUsedExpletive = (jsonData) => {
     const wordCounts = { ...expletiveDict };
-    //console.log('jsonData:', jsonData);
-    //console.log('wordCounts:', wordCounts); 
     // Count occurrences in messages
     for (const key in jsonData) {
-      // Check if message has text property and it's not undefined
-      //console.log('jsonData[key]:', jsonData[key]);
-      //console.log('jsonData[key][text]:', jsonData[key]['content']['text']);
       if (jsonData[key] && jsonData[key]['content']['text']) {
         const message = jsonData[key]['content']['text'];
         const words = message.split(' ');
-        console.log('words:', words);
-        // Check each word in the message
+
         for (const messageWord of words) {
-          // Clean the word of any punctuation
           const cleanWord = messageWord.replace(/[.,!?]/, '');
           
           // If the word is in our dictionary, increment its count
@@ -52,14 +45,12 @@ const ExpletivesCard = () => {
     }
 
     setTopExpletive({ word: maxWord, count: maxCount });
-    console.log('Most used expletive:', maxWord, maxCount);
     setIsLoaded(true);
   };
 
   useEffect(() => {
     const blob = window.sessionStorage.getItem('message_json');
     const jsonblob = JSON.parse(blob);
-    console.log('jsonblob:', jsonblob);
     findMostUsedExpletive(jsonblob);
   }, []);
 
