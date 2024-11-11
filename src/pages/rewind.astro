@@ -1,20 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Masonry from '../components/Masonry.astro'
+import Layout from "../layouts/Layout.astro";
+import Masonry from "../components/Masonry.astro";
+import Names from "../components/Names/Names";
 ---
 
 <Layout title="Rewind">
-    <main>
-        <p>Here's your rewind with</p>
-        <h1>NANDANA</h1>
-        <Masonry />
-        <div class="btn-container">
-            <p>Want more insight into your chats? Try out AI summarizer!</p>
-            <button class="btn btn-tertiary" id="summarizerBttn"
-                >Summarize My Chat</button
-            >
-        </div>
-    </main>
+  <main>
+    <p>Let's Rewind!</p>
+    <Names client:load/>
+    <Masonry/>
+  </main>
+</Layout>
 
     <script>
         document.getElementById('summarizerBttn').onclick = () => {
