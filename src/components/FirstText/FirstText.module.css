@@ -4,8 +4,8 @@
 }
 .name {
     text-align: center;
-    font-size: 3rem;
-    color: #E52082;
+    font-size: 4rem;
+    color: #FBFEF2;
     margin: 0;
     padding: 0;
     /* Bright things in dark environments usually cast that light, giving off a glow */
@@ -15,7 +15,7 @@
 .stat {
     text-align: center;
     font-size: 1.5rem;
-    color: #25DEC0;
+    color: #FBFEF2;
     margin: 0;
     padding: 0;
 }
@@ -24,15 +24,11 @@
     border-radius: 1rem;
     border: 0.2rem solid #FBFEF2;
     display: flex;
-} 
-.card-left {
-    /* border: 0.1rem solid #a9cc3f; */
+    flex-direction: column;
     padding: 1.5rem;
-}
-.card-right {
-    /* border: 0.1rem solid #a9cc3f; */
-    margin-right: 1rem;
-}
+    background-image: linear-gradient(#08001A, #25DEC0);
+} 
+
 .title {
     color: #FBFEF2;
 }

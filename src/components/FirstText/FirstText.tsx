@@ -1,5 +1,4 @@
 import styles from './FirstText.module.css'
-import retro from '../../assets/retrostripes.svg'
 import { useEffect, useState } from 'react'
 
 const FirstText = () => {
@@ -46,15 +45,10 @@ const FirstText = () => {
 
   return (
     <div className={styles['card']}>
-      <div className={styles['card-left']}>
         <h3 className={styles['desc']}>it looks like</h3>
         <h1 className={styles['name']}>{name}</h1>
         <h1 className={styles['stat']}>usually texts first</h1>
         <h2 className={styles['desc']}>(not desperate)</h2>
-      </div>
-      <div className={styles['card-right']}>
-        <img src={retro.src} alt='retro'/>
-      </div>
     </div>
    
   )
