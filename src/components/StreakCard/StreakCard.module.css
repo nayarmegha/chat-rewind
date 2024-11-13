@@ -25,6 +25,8 @@
 }
 .card {
     background-color: #233c36;
+    height: 100%;
+    background-color: #08001A;
     border-radius: 1rem;
     border: 0.2rem solid #FBFEF2;
     display: flex;

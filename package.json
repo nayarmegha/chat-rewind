@@ -19,6 +19,7 @@
         "astro": "^4.15.10",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "sass-embedded": "^1.80.6",
         "tsx": "^4.19.2"
     },
     "devDependencies": {

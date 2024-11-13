@@ -1,9 +1,9 @@
 ---
 import StatCard from './StatCard/StatCard.tsx'
+import ExpletivesCard from './ExpletivesCard/ExpletivesCard.tsx'
+import MissedCallsCard from './MissedCallsCard/MissedCallsCard.tsx'
 import BiggestYapperCard from './BiggestYapperCard/BiggestYapperCard'
-import MissedCallsCard from './MissedCallsCard/MissedCallsCard'
-import StreakCard from './StreakCard/StreakCard'
-import ExpletivesCard from './ExpletivesCard/ExpletivesCard'
+import StreakCard from './StreakCard/StreakCard.tsx'
 ---
 
 <div class="masonry-container">
@@ -13,12 +13,12 @@ import ExpletivesCard from './ExpletivesCard/ExpletivesCard'
         <StatCard client:load />
     </div>
     <div class="card-container">
-        <BiggestYapperCard client:load />
+        <ExpletivesCard client:load />
         <MissedCallsCard client:load />
-        <StreakCard client:load />
+        <BiggestYapperCard client:load />
     </div>
     <div class="card-container">
-        <ExpletivesCard client:load />
+        <StreakCard client:load />
         <StatCard client:load />
         <StatCard client:load />
     </div>
