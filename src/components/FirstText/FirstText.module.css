@@ -1,0 +1,35 @@
+
+.desc {
+    text-align: center
+}
+.name {
+    text-align: center;
+    font-size: 4rem;
+    color: #FBFEF2;
+    margin: 0;
+    padding: 0;
+    /* Bright things in dark environments usually cast that light, giving off a glow */
+    filter: drop-shadow(0 2px 3px);
+    font-style: italic;
+}
+.stat {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #FBFEF2;
+    margin: 0;
+    padding: 0;
+}
+.card {
+    background-color: #08001A;
+    border-radius: 1rem;
+    border: 0.2rem solid #FBFEF2;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-image: linear-gradient(#08001A, #25DEC0);
+    overflow-wrap: anywhere;
+} 
+
+.title {
+    color: #FBFEF2;
+}
