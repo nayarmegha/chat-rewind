@@ -28,6 +28,7 @@
     padding: 1.5rem;
     background-image: linear-gradient(#08001A, #25DEC0);
     overflow-wrap: anywhere;
+    height: 100%;
 } 
 
 .title {
