@@ -28,6 +28,8 @@
 .card-left {
     /* border: 0.1rem solid #a9cc3f; */
     padding: 1.5rem;
+    width: 100%; 
+    box-sizing: border-box; 
 }
 .card-right {
     /* border: 0.1rem solid #a9cc3f; */

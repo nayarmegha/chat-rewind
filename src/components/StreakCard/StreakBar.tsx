@@ -1,5 +1,5 @@
 const StreakBar = ({ streakDays, totalDays }) => {
-  const barHeight = 12;
+  const barHeight = 16;
   const streakPercentage = (streakDays / totalDays) * 100;
 
   return (
