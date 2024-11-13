@@ -13,7 +13,9 @@ const ExpletivesCard = () => {
     'crap': 0,
     'wtf': 0,
     'fuck' : 0,
-    'shit' : 0
+    'shit' : 0,
+    '🖕🏼' : 0,
+    '🤬' : 0
   };
 
   const findMostUsedExpletive = (jsonData) => {
@@ -47,7 +49,7 @@ const ExpletivesCard = () => {
     }
 
      if (maxCount === 0) {
-      setTopExpletive({ word: 'No expletives in chat', count: 0 });
+      setTopExpletive({ word: 'No expletives in chat ✅', count: 0 });
     } else {
       setTopExpletive({ word: maxWord, count: maxCount });
     }
@@ -70,7 +72,7 @@ const ExpletivesCard = () => {
         <h3 className={styles['desc']}>most used expletive</h3>
         <h1 className={styles['number']}>{topExpletive.word}</h1>
         {topExpletive.count > 0 && (
-          <h1 className={styles['stat']}>used {topExpletive.count} times</h1>
+          <h1 className={styles['stat']}> used {topExpletive.count} times 🤬</h1>
         )}
       </div>
     </div>
