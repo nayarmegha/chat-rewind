@@ -28,6 +28,7 @@
         rgb(99, 63, 90) 0%,
         rgba(37, 222, 192, 0.05) 100%
     );
+    height: 100%;
     border-radius: 1rem;
     border: 0.2rem solid #FBFEF2;
     width: 100%;

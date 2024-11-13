@@ -1,5 +1,7 @@
 ---
 import StatCard from './StatCard/StatCard.tsx'
+import ExpletivesCard from './ExpletivesCard/ExpletivesCard.tsx'
+import MissedCallsCard from './MissedCallsCard/MissedCallsCard.tsx'
 import BiggestYapperCard from './BiggestYapperCard/BiggestYapperCard'
 import MissedCallsCard from './MissedCallsCard/MissedCallsCard'
 import StreakCard from './StreakCard/StreakCard'
@@ -8,6 +10,7 @@ import LongestConvo from "./LongestConvo/LongestConvo";
 import FirstText from "./FirstText/FirstText.tsx"
 import NoTextDays from "./NoTextDays/NoTextDays";
 
+import StreakCard from './StreakCard/StreakCard.tsx'
 ---
 <div class="masonry-container">
     <div class="card-container">
@@ -20,12 +23,20 @@ import NoTextDays from "./NoTextDays/NoTextDays";
         <StreakCard client:load/>
         <ExpletivesCard client:load/>
     </div> 
+        <ExpletivesCard client:load />
+        <MissedCallsCard client:load />
+        <BiggestYapperCard client:load />
+    </div>
     <div class="card-container">
         <LongestConvo client:load/>
         <FirstText client:load/>
         <StatCard client:load/>
     </div> 
 
+        <StreakCard client:load />
+        <StatCard client:load />
+        <StatCard client:load />
+    </div>
 </div>
 
 <style>
