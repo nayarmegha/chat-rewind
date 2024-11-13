@@ -1,29 +1,29 @@
 ---
 interface Props {
-  title: string;
-  className?: string;
+    title: string
+    className?: string
 }
 
-const { title, className = "" } = Astro.props;
+const { title, className = '' } = Astro.props
 ---
 
 <!-- If needed, this card component could be resued for the final data visualization page -->
 <div class={`card ${className}`}>
-  <h2 class="title">{title}</h2>
-  <slot />
+    <h2 class="title">{title}</h2>
+    <slot />
 </div>
 
 <style>
-  .card {
-    background-color: #000000;
-    border-radius: 1.5rem;
-    border: 1px solid #ffffff;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-  }
+    .card {
+        background-color: #000000;
+        border-radius: 1.5rem;
+        border: 1px solid #ffffff;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
 
-  .title {
-    color: #ffffff;
-  }
+    .title {
+        color: #ffffff;
+    }
 </style>
