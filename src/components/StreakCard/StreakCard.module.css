@@ -21,6 +21,9 @@
     border-radius: 1rem;
     border: 0.2rem solid #FBFEF2;
     display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
 } 
 .card-left {
     /* border: 0.1rem solid #a9cc3f; */
