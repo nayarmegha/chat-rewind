@@ -1,64 +1,118 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Masonry from "../components/Masonry.astro";
+import StatCard from "../components/StatCard/StatCard";
 ---
 
 <Layout title="Rewind">
   <main>
+    
+    <div class="header">
+      <h1> Welcome to your ReWIND with X and Y</h1>
+    </div>
 
-    <section class="card" style="background-color: red;">
-    </section>
-    <section class="card" style="background-color: blue;">
-    </section>
-    <section class="card" style="background-color: green;">
-    </section>
-    <section class="card" style="background-color: purple;">
-    </section>
-    <section class="card" style="background-color: violet;">
-    </section>
+    <div class="cards">
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+  
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+  
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+  
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+  
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+  
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+  
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+      
+      <div class="card">
+        <StatCard client:load/>
+      </div>
+    </div>
   </main>
-
-  <!-- <main>
-    <p>Here's your rewind with</p>
-    <h1>NANDANA</h1>
-    <Masonry/>
-  </main> -->
 </Layout>
 
 <script>
-  
 </script>
 
 <style>
+  
 main {
-  margin: 0;
-  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-flow: row nowrap;
-  font-family: monospace;
 
   overflow: scroll;
-  scroll-snap-stop: always;
   scroll-snap-type: x mandatory;
-  scroll-padding-block: ;
 
   width: 100vw;
   height: 100vh;
 }
-  .card {
-    margin: 0;
-    padding: 0;
 
-    flex: none;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    scroll-margin: 0;
-    height: 100%;
-    width: 100vw;
-    
+.card {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  scroll-margin: 0;
+  
+  height: 100vh;
+  width: 100vw;
+}
+
+.cards {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  scroll-margin: 0;
+  flex-shrink: 0;
+  
+  width: 100vw;
+  height: 100vh;
+}
+
+@media only screen and (min-width: 721px) {
+  main {
+    display: block;
+    max-width: 1440px;
+    margin: auto;
+    overflow: visible; 
   }
+
+  .cards {
+    columns: 3 450px;
+    column-gap: 1rem;
+    display: block;
+  }
+
+  .card {
+    height: auto;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .header {
+    height: auto;
+    width: 100%;
+  }
+}
 
   /* main {
     align-items: center;
@@ -79,7 +133,7 @@ main {
   h1 {
     font-size: 5rem;
     font-weight: bold;
-    background: #FBFEF2; linear-gradient(to right, #2dd4bf, #ec4899);
+    background: #FBFEF2; 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
