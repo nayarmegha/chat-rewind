@@ -7,6 +7,9 @@ import MissedCallsCard from '../components/MissedCallsCard/MissedCallsCard'
 import StreakCard from '../components/StreakCard/StreakCard'
 import ExpletivesCard from '../components/ExpletivesCard/ExpletivesCard'
 import Names from '../components/Names/Names'
+import LongestConvo from "../components/LongestConvo/LongestConvo";
+import NoTextDays from "../components/NoTextDays/NoTextDays";
+import FirstText from "../components/FirstText/FirstText";
 ---
 
 <Layout title="Rewind">
@@ -36,6 +39,18 @@ import Names from '../components/Names/Names'
   
       <section class="card">
         <ExpletivesCard client:load/>
+      </section>
+
+      <section class="card">
+        <LongestConvo client:load/>
+      </section>
+
+      <section class="card">
+        <NoTextDays client:load/>
+      </section>
+
+      <section class="card">
+        <FirstText client:load/>
       </section>
     </div>
   </main>
