@@ -66,7 +66,7 @@ const BiggestYapperCard = () => {
   return (
     <div className={styles['card']}>
       <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>biggest chatter</h3>
+        <h3 className={styles['desc']}>biggest yapper</h3>
         <h1 className={styles['number']}>{biggestYapper.name}</h1>
         <h2 className={styles['stat']}>
           {biggestYapper.count.toLocaleString()} messages
