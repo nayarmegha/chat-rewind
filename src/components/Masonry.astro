@@ -6,25 +6,25 @@ import StreakCard from './StreakCard/StreakCard'
 import ExpletivesCard from './ExpletivesCard/ExpletivesCard'
 import LongestConvo from "./LongestConvo/LongestConvo";
 import FirstText from "./FirstText/FirstText.tsx"
+import NoTextDays from "./NoTextDays/NoTextDays";
 
 ---
-
 <div class="masonry-container">
     <div class="card-container">
-        <StatCard client:load />
-        <FirstText client:load />
-        <StatCard client:load />
-    </div>
+        <StatCard client:load/>
+        <BiggestYapperCard client:load/>
+        <MissedCallsCard client:load/>
+    </div> 
     <div class="card-container">
-        <BiggestYapperCard client:load />
-        <MissedCallsCard client:load />
-        <StreakCard client:load />
-    </div>
+        <NoTextDays client:load/>
+        <StreakCard client:load/>
+        <ExpletivesCard client:load/>
+    </div> 
     <div class="card-container">
-        <ExpletivesCard client:load />
         <LongestConvo client:load/>
-        <StatCard client:load /> 
-    </div>
+        <FirstText client:load/>
+        <StatCard client:load/>
+    </div> 
 
 </div>
 
@@ -37,25 +37,25 @@ import FirstText from "./FirstText/FirstText.tsx"
         justify-content: center;
     }
 
-    .card-container {
-        background-color: #08001a;
-        border-radius: 1rem;
-        /* border: 0.2rem solid #ff9900; */
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        width: 33%;
-    }
+  .card-container {
+    background-color: #08001A;
+    border-radius: 1rem;
+    /* border: 0.2rem solid #ff9900; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 33%;
+  }
 
-    @media (max-width: 700px) {
-        .masonry-container {
-            flex-direction: column;
-            align-items: center;
+    @media (max-width:700px) {
+    .masonry-container {
+        flex-direction:column;
+        align-items: center;
         }
 
-        .card-container {
-            width: 90%;
-            align-items: center;
+    .card-container {
+        width: 90%;
+        align-items: center;
         }
     }
 </style>
