@@ -6,10 +6,12 @@ const LongestConvo = () => {
 
   const [duration, setDuration] = useState<number>(0)
   const [hours, setHours] = useState<number>(0)
+  const [longestDay, setLongestDay] = useState<string>("")
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   const totalMessagesThisYear = (jsonData) => {
     let maxDuration = 0 
+    let maxDay = new Date()
     let startTime = new Date(jsonData[0]['date'])
     let prevTime =  new Date(jsonData[0]['date'])
     // script to find number of minutes of longest conversation
@@ -20,6 +22,7 @@ const LongestConvo = () => {
         const currDuration = (prevTime.getTime() - startTime.getTime()) / (1000 * 60)
         if (currDuration > maxDuration) {
           maxDuration = currDuration
+          maxDay = startTime
         }
         startTime = currTime
         prevTime = currTime
@@ -31,6 +34,11 @@ const LongestConvo = () => {
     setDuration(Math.round(maxDuration))
     const numhours = maxDuration/60
     setHours(Math.round(numhours*10)/10)
+    setLongestDay(maxDay.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    }))
     setIsLoaded(true)
   }
 
@@ -50,7 +58,7 @@ const LongestConvo = () => {
       <div className={styles['card-left']}>
         <h3 className={styles['desc']}>your longest conversation lasted for</h3>
         <h1 className={styles['number']}>{duration}</h1>
-        <h1 className={styles['stat']}>minutes</h1>
+        <h1 className={styles['stat']}>minutes on {longestDay}</h1>
         <h2 className={styles['desc']}>that's a total of {hours} hours!</h2>
       </div>
       <div className={styles['card-right']}>
