@@ -26,7 +26,6 @@ const StreakCard = () => {
     
     // convert to array of dates
     const dateArray = Array.from(uniqueDates);
-    console.log("total days: ",uniqueDates.size);
 
     let runningStreak = 1; // current streak we're counting
     let longestStreak = 1; // lngest streak found so far
