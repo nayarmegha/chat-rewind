@@ -1,110 +1,115 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Masonry from "../components/Masonry.astro";
-import Names from "../components/Names/Names";
+import Layout from '../layouts/Layout.astro'
+import Masonry from '../components/Masonry.astro'
+import Names from '../components/Names/Names'
 ---
 
 <Layout title="Rewind">
-  <main>
-    <p>Let's Rewind!</p>
-    <Names client:load/>
-    <Masonry/>
-  </main>
+    <main>
+        <p>Let's Rewind!</p>
+        <Names client:load />
+        <Masonry />
+        <div class="btn-container">
+            <p>Want more insight into your chats? Try out AI summarizer!</p>
+            <button class="btn btn-tertiary" id="summarizerBttn"
+                >Summarize My Chat</button
+            >
+        </div>
+    </main>
 </Layout>
 
-    <script>
-        document.getElementById('summarizerBttn').onclick = () => {
-            window.location.href = '/summarizer'
-        }
-    </script>
+<script>
+    document.getElementById('summarizerBttn').onclick = () => {
+        window.location.href = '/summarizer'
+    }
+</script>
 
-    <style>
-        main {
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem 1rem;
-            font-family: monospace;
-            margin-bottom: 1rem;
-            margin-top: 2rem;
-            border-radius: 2rem;
-        }
+<style>
+    main {
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem 1rem;
+        font-family: monospace;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+        border-radius: 2rem;
+    }
 
-        p {
-            font-size: 1.25rem;
-            padding: 0;
-            margin: 0;
-        }
-        h1 {
-            font-size: 5rem;
-            font-weight: bold;
-            background: #fbfef2; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    p {
+        font-size: 1.25rem;
+        padding: 0;
+        margin: 0;
+    }
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        background: #fbfef2; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-        .btn-container {
-            justify-content: center;
-            margin: 4rem 0;
-        }
-        .btn {
-            font-size: 1.25rem;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.05em;
-            margin: 2rem;
-            font-family: monospace;
-            text-transform: uppercase;
-        }
+    .btn-container {
+        justify-content: center;
+        margin: 4rem 0;
+    }
+    .btn {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9px;
+        transition: all 0.3s ease;
+        letter-spacing: 0.05em;
+        margin: 2rem;
+        font-family: monospace;
+        text-transform: uppercase;
+    }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
 
-        .btn-primary {
-            background-color: #2dd4bf;
-        }
+    .btn-primary {
+        background-color: #2dd4bf;
+    }
 
-        .btn-primary:hover {
-            background-color: #0c776b;
-        }
+    .btn-primary:hover {
+        background-color: #0c776b;
+    }
 
-        .btn-secondary {
-            background-color: #ec4899;
-            color: #ffffff;
-        }
+    .btn-secondary {
+        background-color: #ec4899;
+        color: #ffffff;
+    }
 
-        .btn-secondary:hover {
-            background-color: #a2034b;
-        }
+    .btn-secondary:hover {
+        background-color: #a2034b;
+    }
 
-        .icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        .highlight {
-            background: linear-gradient(to right, #2dd4bf, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: bold;
-            font-style: italic;
-            padding: 0 0.2em;
-        }
-        .btn-tertiary {
-            background-color: #000000;
-            color: #ffffff;
-            border: 1px solid #ffffff;
-        }
+    .icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .highlight {
+        background: linear-gradient(to right, #2dd4bf, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: bold;
+        font-style: italic;
+        padding: 0 0.2em;
+    }
+    .btn-tertiary {
+        background-color: #000000;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+    }
 
-        .btn-tertiary:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
-    </style>
-</Layout>
+    .btn-tertiary:hover {
+        background-color: #ffffff;
+        color: #000000;
+    }
+</style>
