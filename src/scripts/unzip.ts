@@ -18,10 +18,7 @@ export async function unzip(zipFileBlob : Blob) {
   // content via `helloWorldWriter`, and closes the reader.
   const zipReader = new ZipReader(zipFileReader);
   const allEntries = (await zipReader.getEntries());
-  console.log(allEntries)
   const chatFile = allEntries.find((data) => data.filename.split('.').pop() == targetFileExtension)
-  console.log(chatFile)
-
 
   const chatData = await chatFile.getData(textWriter);
   await zipReader.close();

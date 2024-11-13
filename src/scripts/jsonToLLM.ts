@@ -24,7 +24,6 @@ export function optimizeChatsForLLM(chats: Chat[], tokenLimit: number = 30000): 
       n: chat.name.trim(),
       m: chat.content.text.trim()
   }));
-  console.log("Optimized messages: ", optimizedMessages);
   
   // batch messages
   // when tokens > 8k, split into multiple batches
