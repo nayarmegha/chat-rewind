@@ -4,20 +4,20 @@
 }
 .number {
     text-align: left;
-    font-size: 2rem;
-    color: #25DEC0;
+    font-size: 4rem;
+    color: #f3479d;
     margin: 0;
     padding: 0;
 }
 .stat {
     text-align: left;
     font-size: 1.5rem;
-    color: #E52082;
+    color: #25DEC0;
     margin: 20px 0;
     padding: 0;
 }
 .card {
-    background-color: #08001A;
+    background-color: #233c36;
     border-radius: 1rem;
     border: 0.2rem solid #FBFEF2;
     display: flex;
@@ -37,9 +37,53 @@
     color: #FBFEF2;
 }
 .sub-stat{
-    color: #FBFEF2;
-    font-size: 1rem;
+    color: #25DEC0;
+    font-size: 0.9rem;
     margin: 20px 0;
     padding: 0;
     text-align: left;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 1rem;
+}
+  
+.barWrapper {
+    width: 100%;
+}
+  
+.name {
+    text-align: left;
+    font-size: 0.8rem;
+    color: #d3d3d3;
+    margin-bottom: 4px;
+}
+  
+.barContainer {
+    position: relative;
+    width: 100%;
+    height: 16px;
+    background-color: rgba(251, 254, 242, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+  
+.bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.5s ease-out;
+}
+  
+.percentage {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: #d3d3d3;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './BiggestYapperCard.module.css';
+import ChatDistributionBars from './ChatDistribution';
 
 const BiggestYapperCard = () => {
   const [biggestYapper, setBiggestYapper] = useState({
@@ -7,7 +8,12 @@ const BiggestYapperCard = () => {
     count: 0,
     percentage: 0
   });
+  const [participants, setParticipants] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const getFirstName = (fullName) => {
+    return fullName.split(' ')[0];
+  };
 
   const findBiggestYapper = (jsonData) => {
     // create a map to store message counts per person
@@ -26,27 +32,26 @@ const BiggestYapperCard = () => {
       }
     }
 
-    // find the person with most messages
-    let maxCount = 0;
-    let maxSender = '';
-    
-    messageCounts.forEach((count, sender) => {
-      if (count > maxCount) {
-        maxCount = count;
-        maxSender = sender;
-      }
-    });
+    const participantsData = Array.from(messageCounts.entries())
+    .map(([name, count]) => ({
+      firstName: getFirstName(name),
+      fullName: name,
+      count,
+      percentage: Number(((count / totalMessages) * 100).toFixed(1))
+    }))
+    .sort((a, b) => b.count - a.count); // Sort by count in descending order
 
-    // get percentage of total messages
-    const percentage = ((maxCount / totalMessages) * 100).toFixed(1);
+  // Set the biggest yapper (first in sorted array)
+  setBiggestYapper({
+    name: participantsData[0].firstName,
+    count: participantsData[0].count,
+    percentage: participantsData[0].percentage
+  });
 
-    setBiggestYapper({
-      name: maxSender,
-      count: maxCount,
-      percentage: Number(percentage)
-    });
-    setIsLoaded(true);
-  };
+  // Set all participants data
+  setParticipants(participantsData);
+  setIsLoaded(true);
+};
 
   useEffect(() => {
     const blob = window.sessionStorage.getItem('message_json');
@@ -69,8 +74,9 @@ const BiggestYapperCard = () => {
         <p className={styles['sub-stat']}>
           ({biggestYapper.percentage}% of all messages)
         </p>
+        <ChatDistributionBars participants={participants} />
+
       </div>
-      
     </div>
   );
 };
