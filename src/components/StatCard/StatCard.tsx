@@ -1,6 +1,6 @@
-import styles from './StatCard.module.scss'
-import retro from '../../assets/retrostripes.svg'
+import styles from './StatCard.module.css'
 import { useEffect, useState } from 'react'
+import blueBG from '../../assets/blueMsg.svg'
 
 const StatCard = () => {
 
@@ -38,16 +38,11 @@ const StatCard = () => {
   }
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
+    <div className={styles['card']} style={{backgroundImage:`url(${blueBG.src})`, backgroundPosition:'center'}}>
         <h3 className={styles['desc']}>you sent each other</h3>
         <h1 className={styles['number']}>{texts}</h1>
         <h1 className={styles['stat']}>messages this year</h1>
-        <h2 className={styles['desc']}>that's an average of {avgTexts} texts per day!</h2>
-      </div>
-      <div className={styles['card-right']}>
-        <img src={retro.src} alt='retro'/>
-      </div>
+        <h2 className={styles['desc']}>that's an average of <span style={{color:"#25DEC0", fontSize:"2rem"}}>{avgTexts}</span> texts per day!</h2>
     </div>
    
   )

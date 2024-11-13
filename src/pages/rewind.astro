@@ -8,6 +8,9 @@ import StreakCard from '../components/StreakCard/StreakCard'
 import ExpletivesCard from '../components/ExpletivesCard/ExpletivesCard'
 import TotalTime from '../components/TotalTimeCard/TotalTime'
 import Names from '../components/Names/Names'
+import LongestConvo from "../components/LongestConvo/LongestConvo";
+import NoTextDays from "../components/NoTextDays/NoTextDays";
+import FirstText from "../components/FirstText/FirstText";
 ---
 
 <Layout title="Rewind">
@@ -26,15 +29,15 @@ import Names from '../components/Names/Names'
       <section class="card">
         <BiggestYapperCard client:load/>
       </section>
+
+      <section class="card">
+        <FirstText client:load/>
+      </section>
   
       <section class="card">
         <MissedCallsCard client:load/>
       </section>
-  
-      <section class="card">
-        <StreakCard client:load/>
-      </section>
-  
+
       <section class="card">
         <ExpletivesCard client:load/>
       </section>
@@ -42,6 +45,18 @@ import Names from '../components/Names/Names'
       <section class="card">
         <TotalTime client:load/>
       </section>
+        <NoTextDays client:load/>
+      </section>
+
+      <section class="card">
+        <LongestConvo client:load/>
+      </section>
+
+      <section class="card">
+        <StreakCard client:load/>
+      </section>
+      
+
     </div>
   </main>
 </Layout>
@@ -94,7 +109,6 @@ main {
     display: block;
     max-width: 1440px;
     margin: auto;
-
     height: 100vh;
     overflow: visible; 
   }
@@ -103,9 +117,6 @@ main {
     columns: 3 450px;
     column-gap: 1rem;
     display: block;
-    height: 100vh;
-    flex-shrink: 0;
-    /* height: 1000px; */
   }
 
   .card {

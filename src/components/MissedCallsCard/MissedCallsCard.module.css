@@ -1,37 +1,65 @@
-
 .desc {
-    text-align: left
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
+
 .number {
     text-align: left;
     font-size: 5rem;
     color: #25DEC0;
     margin: 0;
     padding: 0;
+    line-height: 1;
 }
+
 .stat {
     text-align: left;
     font-size: 2.5rem;
     color: #E52082;
     margin: 0;
     padding: 0;
+    line-height: 1.2;
 }
-.card {
-    height: 100%;
 
-    background-color: #08001A;
+.card {
+    background: linear-gradient(
+        145deg,
+        rgb(99, 63, 90) 0%,
+        rgba(37, 222, 192, 0.05) 100%
+    );
+    height: 100%;
     border-radius: 1rem;
     border: 0.2rem solid #FBFEF2;
-    display: flex;
-} 
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+}
 .card-left {
-    /* border: 0.1rem solid #a9cc3f; */
-    padding: 1.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
-.card-right {
-    /* border: 0.1rem solid #a9cc3f; */
-    margin-right: 1rem;
+
+.number-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
+
+.call-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.number-container > :last-child {
+    align-self: center;
+}
+
 .title {
     color: #FBFEF2;
 }
