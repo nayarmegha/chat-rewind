@@ -1,6 +1,6 @@
 import styles from './NoTextDays.module.css'
-import retro from '../../assets/retrostripes.svg'
 import { useEffect, useState } from 'react'
+import pinkBg from '../../assets/pinkNoText.svg'
 
 const NoTextDays = () => {
 
@@ -46,12 +46,12 @@ const NoTextDays = () => {
   }
 
   return (
-    <div className={styles['card']}>
+    <div className={styles['card']} style={{backgroundImage:`url(${pinkBg.src})`, backgroundPosition:'center'}}>
       <div className={styles['card-left']}>
         <h3 className={styles['desc']}>you didn't text each other for</h3>
         <h1 className={styles['number']}>{notextDays}</h1>
         <h1 className={styles['stat']}>days this past year</h1>
-        {notextDays < 20 ? <h2 className={styles['desc']}>wow, you must really like talking to each other</h2> : <h2 className={styles['desc']}>wow, you hate each other?</h2> }
+        {notextDays < 60 ? <h2 className={styles['desc']}>wow, you must <span style={{fontStyle:"italic"}}>really</span> like talking to each other</h2> : <h2 className={styles['desc']}>wow, you <span style={{fontStyle:"italic"}}>hate</span> each other?</h2> }
       </div>
     </div>
    
