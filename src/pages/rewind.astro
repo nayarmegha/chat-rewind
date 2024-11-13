@@ -6,6 +6,7 @@ import BiggestYapperCard from '../components/BiggestYapperCard/BiggestYapperCard
 import MissedCallsCard from '../components/MissedCallsCard/MissedCallsCard'
 import StreakCard from '../components/StreakCard/StreakCard'
 import ExpletivesCard from '../components/ExpletivesCard/ExpletivesCard'
+import TotalTime from '../components/TotalTimeCard/TotalTime'
 import Names from '../components/Names/Names'
 ---
 
@@ -36,6 +37,10 @@ import Names from '../components/Names/Names'
   
       <section class="card">
         <ExpletivesCard client:load/>
+      </section>
+
+      <section class="card">
+        <TotalTime client:load/>
       </section>
     </div>
   </main>
