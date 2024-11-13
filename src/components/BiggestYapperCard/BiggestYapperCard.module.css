@@ -1,0 +1,35 @@
+
+.desc {
+    text-align: left
+}
+.number {
+    text-align: left;
+    font-size: 2rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+}
+.stat {
+    text-align: left;
+    font-size: 2.5rem;
+    color: #E52082;
+    margin: 0;
+    padding: 0;
+}
+.card {
+    background-color: #08001A;
+    border-radius: 1rem;
+    border: 0.2rem solid #FBFEF2;
+    display: flex;
+} 
+.card-left {
+    /* border: 0.1rem solid #a9cc3f; */
+    padding: 1.5rem;
+}
+.card-right {
+    /* border: 0.1rem solid #a9cc3f; */
+    margin-right: 1rem;
+}
+.title {
+    color: #FBFEF2;
+}
