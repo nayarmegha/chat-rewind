@@ -1,3 +1,4 @@
+@use "sass:list";
 
 .desc {
     text-align: left;
@@ -58,7 +59,7 @@ $back: white;
     //   }
     $back-pos: ();
          @for $i from 0 through 13 {
-          $back-pos: append($back-pos, (($i * 4) + vh) 0, $separator:comma);
+          $back-pos: list.append($back-pos, (($i * 4) + vh) 0, $separator:comma);
       }
     
     
