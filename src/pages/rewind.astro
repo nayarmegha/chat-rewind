@@ -5,10 +5,24 @@ import Masonry from "../components/Masonry.astro";
 
 <Layout title="Rewind">
   <main>
+
+    <section class="card" style="background-color: red;">
+    </section>
+    <section class="card" style="background-color: blue;">
+    </section>
+    <section class="card" style="background-color: green;">
+    </section>
+    <section class="card" style="background-color: purple;">
+    </section>
+    <section class="card" style="background-color: violet;">
+    </section>
+  </main>
+
+  <!-- <main>
     <p>Here's your rewind with</p>
     <h1>NANDANA</h1>
     <Masonry/>
-  </main>
+  </main> -->
 </Layout>
 
 <script>
@@ -16,7 +30,37 @@ import Masonry from "../components/Masonry.astro";
 </script>
 
 <style>
-  main {
+main {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  font-family: monospace;
+
+  overflow: scroll;
+  scroll-snap-stop: always;
+  scroll-snap-type: x mandatory;
+  scroll-padding-block: ;
+
+  width: 100vw;
+  height: 100vh;
+}
+  .card {
+    margin: 0;
+    padding: 0;
+
+    flex: none;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    scroll-margin: 0;
+    height: 100%;
+    width: 100vw;
+    
+  }
+
+  /* main {
     align-items: center;
     min-height: 100vh;
     text-align: center;
@@ -35,11 +79,12 @@ import Masonry from "../components/Masonry.astro";
   h1 {
     font-size: 5rem;
     font-weight: bold;
-    background: #FBFEF2; /*linear-gradient(to right, #2dd4bf, #ec4899);*/
+    background: #FBFEF2; linear-gradient(to right, #2dd4bf, #ec4899);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .btn {
     display: flex;
     justify-content: center;
@@ -88,5 +133,5 @@ import Masonry from "../components/Masonry.astro";
     font-weight: bold;
     font-style: italic;
     padding: 0 0.2em;
-  }
+  } */
 </style>
