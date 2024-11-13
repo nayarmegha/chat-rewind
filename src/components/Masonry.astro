@@ -1,27 +1,34 @@
 ---
 import StatCard from './StatCard/StatCard.tsx'
-import ExpletivesCard from './ExpletivesCard/ExpletivesCard.tsx'
-import MissedCallsCard from './MissedCallsCard/MissedCallsCard.tsx'
 import BiggestYapperCard from './BiggestYapperCard/BiggestYapperCard'
-import StreakCard from './StreakCard/StreakCard.tsx'
----
+import MissedCallsCard from './MissedCallsCard/MissedCallsCard'
+import StreakCard from './StreakCard/StreakCard'
+import ExpletivesCard from './ExpletivesCard/ExpletivesCard'
+import LongestConvo from "./LongestConvo/LongestConvo";
+import FirstText from "./FirstText/FirstText.tsx"
+import NoTextDays from "./NoTextDays/NoTextDays";
 
+---
 <div class="masonry-container">
     <div class="card-container">
-        <StatCard client:load />
-        <StatCard client:load />
-        <StatCard client:load />
-    </div>
+        <StatCard client:load/>
+        <BiggestYapperCard client:load/>
+        <MissedCallsCard client:load/>
+    </div> 
     <div class="card-container">
+        <NoTextDays client:load/>
+        <StreakCard client:load/>
+        <ExpletivesCard client:load/>
+    </div> 
         <ExpletivesCard client:load />
         <MissedCallsCard client:load />
         <BiggestYapperCard client:load />
-    </div>
+
     <div class="card-container">
-        <StreakCard client:load />
-        <StatCard client:load />
-        <StatCard client:load />
-    </div>
+        <LongestConvo client:load/>
+        <FirstText client:load/>
+        <StatCard client:load/>
+    </div> 
 </div>
 
 <style>
@@ -33,25 +40,25 @@ import StreakCard from './StreakCard/StreakCard.tsx'
         justify-content: center;
     }
 
-    .card-container {
-        background-color: #08001a;
-        border-radius: 1rem;
-        /* border: 0.2rem solid #ff9900; */
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        width: 33%;
-    }
+  .card-container {
+    background-color: #08001A;
+    border-radius: 1rem;
+    /* border: 0.2rem solid #ff9900; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 33%;
+  }
 
-    @media (max-width: 700px) {
-        .masonry-container {
-            flex-direction: column;
-            align-items: center;
+    @media (max-width:700px) {
+    .masonry-container {
+        flex-direction:column;
+        align-items: center;
         }
 
-        .card-container {
-            width: 90%;
-            align-items: center;
+    .card-container {
+        width: 90%;
+        align-items: center;
         }
     }
 </style>

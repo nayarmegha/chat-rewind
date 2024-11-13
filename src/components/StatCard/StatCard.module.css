@@ -1,0 +1,29 @@
+
+.desc {
+    text-align: left;
+    font-size: 1.5rem;
+    color: #FBFEF2;
+}
+.number {
+    text-align: left;
+    font-size: 5rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+}
+.stat {
+    text-align: left;
+    font-size: 2rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+}
+.card {
+    background-color: #08001A;
+    border-radius: 1rem;
+    border: 0.2rem solid #FBFEF2;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+} 

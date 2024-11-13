@@ -1,0 +1,33 @@
+
+.desc {
+    text-align: center;
+    color: #08001A;
+    font-size: 1.5rem;
+}
+.number {
+    text-align: center;
+    font-size: 5rem;
+    color: #08001A;
+    margin: 0;
+    padding: 0;
+}
+.stat {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #08001A;
+    margin: 0;
+    padding: 0;
+}
+.card {
+    border-radius: 1rem;
+    border: 0.2rem solid #FBFEF2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+} 
+
+.subtext {
+    font-size: 2.5rem;
+    color: #f8f0f0;
+}
