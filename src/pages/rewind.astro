@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Masonry from "../components/Masonry.astro";
+// import Masonry from "../components/Masonry.astro";
 import StatCard from "../components/StatCard/StatCard";
 ---
 
@@ -152,27 +152,39 @@ main {
     font-family: monospace;
   }
 
-  .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  }
+    .btn-container {
+        justify-content: center;
+        margin: 4rem 0;
+    }
+    .btn {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9px;
+        transition: all 0.3s ease;
+        letter-spacing: 0.05em;
+        margin: 2rem;
+        font-family: monospace;
+        text-transform: uppercase;
+    }
 
-  .btn-primary {
-    background-color: #2dd4bf;
-  }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
 
-  .btn-primary:hover {
-    background-color: #0c776b;
-  }
+    .btn-primary {
+        background-color: #2dd4bf;
+    }
 
-  .btn-secondary {
-    background-color: #ec4899;
-    color: #ffffff;
-  }
+    .btn-primary:hover {
+        background-color: #0c776b;
+    }
 
-  .btn-secondary:hover {
-    background-color: #a2034b;
-  }
+    .btn-secondary {
+        background-color: #ec4899;
+        color: #ffffff;
+    }
 
   .icons {
     display: flex;

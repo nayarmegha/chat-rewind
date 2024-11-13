@@ -1,27 +1,29 @@
 import styles from './StatCard.module.scss'
 import retro from '../../assets/retrostripes.svg'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const StatCard = () => {
 
-  // const [jsonData, setJsonData] = useState<[jsonData] | null>(null)
   const [texts, setTexts] = useState<number>(0)
+  const [avgTexts, setAvgTexts] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   const totalMessagesThisYear = (jsonData) => {
-    const year = 2024
+    const endDate = new Date()
     let count = 0
 
-    // script to find number of messages sent this year
+    // script to find number of messages sent over a past year
     for (const key in jsonData) {
       const date = new Date(jsonData[key]['date'])
-      if (date.getFullYear() === year) {
-        count +=1
+      const diffInDays = Math.round((endDate.getTime() - date.getTime()) / (1000*60*60*24));
+      if (diffInDays <= 365) {
+        count += 1 
       }
     }
  
     setIsLoaded(true)
     setTexts(count)
+    setAvgTexts(Math.round(count/365))
   }
 
   useEffect (() => {
@@ -37,16 +39,14 @@ const StatCard = () => {
 
   return (
     <div className={styles['card']}>
-      <div className={styles['benday']}>
-        <div className={styles['card-left']}>
-          <h3 className={styles['desc']}>You sent each other...</h3>
-          <h1 className={styles['number']}>{texts}</h1>
-          <h1 className={styles['stat']}>messages this year</h1>
-          <h3 className={styles['desc']}>an average of {(texts / 365).toFixed(2)}/day</h3>
-        </div>
-        <div className={styles['card-right']}>
-          <img src={retro.src} alt='retro'/>
-        </div>
+      <div className={styles['card-left']}>
+        <h3 className={styles['desc']}>you sent each other</h3>
+        <h1 className={styles['number']}>{texts}</h1>
+        <h1 className={styles['stat']}>messages this year</h1>
+        <h2 className={styles['desc']}>that's an average of {avgTexts} texts per day!</h2>
+      </div>
+      <div className={styles['card-right']}>
+        <img src={retro.src} alt='retro'/>
       </div>
     </div>
    
