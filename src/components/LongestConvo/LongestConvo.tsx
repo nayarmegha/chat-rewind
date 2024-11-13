@@ -1,6 +1,6 @@
 import styles from './LongestConvo.module.css'
-import retro from '../../assets/retrostripes.svg'
 import { useEffect, useState } from 'react'
+import tealbg from '../../assets/tealBG.svg'
 
 const LongestConvo = () => {
 
@@ -54,16 +54,12 @@ const LongestConvo = () => {
   }
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
+    <div className={styles['card']} style={{backgroundImage:`url(${tealbg.src})`, backgroundPosition:'center'}}>
         <h3 className={styles['desc']}>your longest conversation lasted for</h3>
         <h1 className={styles['number']}>{duration}</h1>
-        <h1 className={styles['stat']}>minutes on {longestDay}</h1>
-        <h2 className={styles['desc']}>that's a total of {hours} hours!</h2>
-      </div>
-      <div className={styles['card-right']}>
-        <img src={retro.src} alt='retro'/>
-      </div>
+        <h1 className={styles['stat']}>minutes on </h1>
+        <h1 className={styles['stat']}>{longestDay}</h1>
+        <h2 className={styles['desc']}>that's a total of <span className={styles['subtext']}>{hours}</span> hours!</h2>
     </div>
    
   )
