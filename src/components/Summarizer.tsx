@@ -82,7 +82,7 @@ const Summarizer = () => {
       }));
 
       const chatInput = {
-        messages: messagesInContextWindow.map(m => `${m.n}: ${m.m}`),
+        messages: messagesInContextWindow,
         stats: {
           total: totalMessages,
           summarized: summarizedMessages,
@@ -90,10 +90,12 @@ const Summarizer = () => {
         }
       };
 
+      console.log("Chat input: ", chatInput);
+
       const response = await engineRef.current.chat.completions.create({
         messages: [
           SYSTEM_PROMPT,
-          { role: 'user', content: JSON.stringify(chatInput) }
+          { role: 'user', content: JSON.stringify(chatInput.messages) }
         ],
         temperature: 0.1,
         max_tokens: 800,
