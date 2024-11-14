@@ -4,7 +4,7 @@ import type { Chat } from '../scripts/jsonToLLM.ts';
 import { optimizeChatsForLLM } from '../scripts/jsonToLLM.ts';
 import SummaryCard from './SummaryCard';
 
-const CONTEXT_WINDOW = 2800; // setting a conservative context window (max no of tokens the model can process at once)
+const CONTEXT_WINDOW = 2500; // setting a conservative context window (max no of tokens the model can process at once)
 const MODEL_NAME = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC";
 
 const DEFAULT_SUMMARY = {
@@ -16,7 +16,7 @@ const DEFAULT_SUMMARY = {
 
 const SYSTEM_PROMPT = {
   role: 'system',
-  content: `You are a chat summarizer that creates concise summaries. You are given a json input of format {"n": "m"} where n is the name and m is the message content.
+  content: `You are a chat summarizer that creates summaries. You are given a json input of format {"n": "m"} where n is the name and m is the message content.
             Follow these rules strictly:
             1. Title must be under 50 characters
             2. Summary about 300 characters
