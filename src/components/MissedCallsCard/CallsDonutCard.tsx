@@ -2,9 +2,9 @@ import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 const CallsDonutChart = ({ voiceCalls, videoCalls, totalCalls }) => {
   const data = [
-    { name: 'Voice Calls', value: voiceCalls },
-    { name: 'Video Calls', value: videoCalls },
-    { name: 'Total Calls', value: totalCalls }
+    { name: 'Missed Voice Calls', value: voiceCalls },
+    { name: 'Missed Video Calls', value: videoCalls },
+    { name: 'Answered Calls', value: totalCalls - (voiceCalls + videoCalls) }
   ];
 
   const COLORS = ['#38a593', '#d44b8f', '#64ffda'];

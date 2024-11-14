@@ -15,9 +15,9 @@ const MissedCallsCard = () => {
       const content = jsonData[key]['content']
       // Check if content exists and has text property
       if (content) {
-        console.log(content.text)
+        // console.log(content.text)
         // Check for missed voice calls
-        if (content.event.includes('Missed voice call')){
+        if (content?.event?.includes('Missed voice call')){
           voiceCallCount += 1
           totalCalls += 1
         }
