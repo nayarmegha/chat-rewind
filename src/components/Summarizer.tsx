@@ -4,7 +4,7 @@ import type { Chat } from '../scripts/jsonToLLM.ts';
 import { optimizeChatsForLLM } from '../scripts/jsonToLLM.ts';
 import SummaryCard from './SummaryCard';
 
-const CONTEXT_WINDOW = 3000; // setting a conservative context window (max no of tokens the model can process at once)
+const CONTEXT_WINDOW = 2800; // setting a conservative context window (max no of tokens the model can process at once)
 const MODEL_NAME = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC";
 
 const DEFAULT_SUMMARY = {
@@ -16,7 +16,18 @@ const DEFAULT_SUMMARY = {
 
 const SYSTEM_PROMPT = {
   role: 'system',
-  content: 'You are a chat summarizer. You are given a json input of format {"n": "m"} where n is the name of the sender and m is the message they sent. Summarize the WhatsApp conversation, focusing on key themes and notable exchanges. Format output as JSON: {"title": "<brief title>", "summary": "<concise story>", "highlights": ["2-3 key points"]}'
+  content: `You are a chat summarizer that creates concise summaries. You are given a json input of format {"n": "m"} where n is the name and m is the message content.
+            Follow these rules strictly:
+            1. Title must be under 50 characters
+            2. Summary about 300 characters
+            3. Exactly 3 highlights, about 100 characters
+            4. Output must be complete, valid JSON matching this structure:
+            {
+              "title": "Brief title",
+              "summary": "Concise summary",
+              "highlights": ["key point 1", "key point 2", "key point 3"],
+            }
+            5. Address sender by name in the summary`
 };
 
 type LoadingState = {
@@ -70,7 +81,7 @@ const Summarizer = () => {
     try {
       // For this implementation, we are just messages that fit within context window
       // batch processing to summarize entire text paused for now : current model only has context window 4096 tokens
-      const messagesInContextWindow = optimizeChatsForLLM(chatData, CONTEXT_WINDOW)[0];
+      const messagesInContextWindow = optimizeChatsForLLM(chatData, CONTEXT_WINDOW);
       const totalMessages = chatData.length;
       const summarizedMessages = messagesInContextWindow.length;
       const percentageCovered = ((summarizedMessages / totalMessages) * 100).toFixed(1);
@@ -79,7 +90,7 @@ const Summarizer = () => {
         ...prev, 
         progress: `Summarizing ${summarizedMessages} messages (${percentageCovered}% of total)...` 
       }));
-
+      console.log('Messages in context window:', messagesInContextWindow);
       const chatInput = {
         messages: messagesInContextWindow,
         stats: {
@@ -88,7 +99,7 @@ const Summarizer = () => {
           coverage: `${percentageCovered}%`
         }
       };
-
+      console.log('Chat input:', chatInput);
       const response = await engineRef.current.chat.completions.create({
         messages: [
           SYSTEM_PROMPT,
@@ -98,6 +109,7 @@ const Summarizer = () => {
         max_tokens: 800,
         response_format: { type: "json_object" }
       });
+      console.log('Summary response:', response);
 
       const summaryObj = JSON.parse(response.choices[0].message.content);
       setSummary(JSON.stringify({
