@@ -1,124 +1,138 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import type { Chat } from '../scripts/jsonToLLM.ts';
 import { optimizeChatsForLLM } from '../scripts/jsonToLLM.ts';
+import SummaryCard from './SummaryCard';
 
-const Summarizer: React.FC = () => {
+const CONTEXT_WINDOW = 2500; // setting a conservative context window (max no of tokens the model can process at once)
+const MODEL_NAME = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC";
+
+const DEFAULT_SUMMARY = {
+  title: "No Data Available",
+  summary: "No chat data found. Please upload a chat file first.",
+  highlights: [],
+  coverage: "0%"
+};
+
+const SYSTEM_PROMPT = {
+  role: 'system',
+  content: `You are a chat summarizer that creates summaries. You are given a json input of format {"n": "m"} where n is the name and m is the message content.
+            Follow these rules strictly:
+            1. Title must be under 50 characters
+            2. Summary about 300 characters
+            3. Exactly 3 highlights, about 100 characters
+            4. Output must be complete, valid JSON matching this structure:
+            {
+              "title": "Brief title",
+              "summary": "Concise summary",
+              "highlights": ["key point 1", "key point 2", "key point 3"],
+            }
+            5. Address sender by name in the summary`
+};
+
+type LoadingState = {
+  isLoading: boolean;
+  progress: string;
+};
+
+const Summarizer = () => {
   const [summary, setSummary] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [progress, setProgress] = useState('');
-  const [batchProgress, setBatchProgress] = useState('');
-  const engineRef = useRef<any>(null);
+  const [loadingState, setLoadingState] = useState<LoadingState>({ isLoading: false, progress: '' });
+  const engineRef = useRef(null);  // ref to maintain ML engine instance across renders
 
+  // initialize the ML engine and process data when component mounts
   useEffect(() => {
-    const initAndProcess = async () => {
-      await initEngine();
-      await processStoredData();
-    };
-
-    initAndProcess();
-  }, []);
-
-  const initEngine = async () => {
-    setIsLoading(true);
-    setProgress('Initializing Summarizer...');
-    
-    try {
-      engineRef.current = await CreateMLCEngine(
-        "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
-        {
+    (async () => {
+      setLoadingState({ isLoading: true, progress: 'Initializing Summarizer...' });
+      
+      try {
+        engineRef.current = await CreateMLCEngine(MODEL_NAME, {
           initProgressCallback: (p) => {
-            setProgress(`Loading model: ${(p.progress * 100).toFixed(2)}%`);
+            setLoadingState(prev => ({ 
+              ...prev, 
+              progress: `Loading model: ${(p.progress * 100).toFixed(2)}%` 
+            }));
           }
-        }
-      );
-      setProgress('Model loaded successfully!');
-    } catch (error) {
-      console.error('Error initializing WebLLM engine:', error);
-      setProgress('Error loading model. Please try again.');
-    }
-  };
-
-  const processStoredData = async () => {
-    try {
-      setProgress('Fetching chat data...');
-      const storedData = sessionStorage.getItem('message_json');
-      
-      if (!storedData) {
-        setSummary('No chat data found. Please upload a chat file first.');
-        setIsLoading(false);
-        return;
-      }
-
-      // Parse the stored JSON data
-      const chatData: Chat[] = JSON.parse(storedData);
-      
-      setProgress('Generating summary...');
-      await generateSummary(chatData);
-      
-    } catch (error) {
-      console.error('Error processing stored data:', error);
-      setSummary('Error processing chat data. Please try uploading the file again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const generateSummary = async (chatData: Chat[]) => {
-    const systemPrompt = {
-      role: 'system',
-      content: 'You are a chat summarizer. Given a file containing whatsapp data, provide a summary of the conversation. Make the summary stuctured like a story of the input conversation. Give the summary inside the JSON object like {"title": "...", "summary": "...", "highlights": ["...", "..."]}'
-    };
-
-    try {
-      const optimizedBatches = optimizeChatsForLLM(chatData);
-      const allSummaries = [];
-      
-      for (let i = 0; i < optimizedBatches.length; i++) {
-        setBatchProgress(`Processing batch ${i + 1} of ${optimizedBatches.length}...`);
-        
-        const response = await engineRef.current.chat.completions.create({
-          messages: [
-            systemPrompt,
-            { role: 'user', content: JSON.stringify(optimizedBatches[i]) }
-          ],
-          temperature: 0.5,
-          max_tokens: 1000,
-          response_format: { type: "json_object" }
         });
 
-        const summaryObj = JSON.parse(response.choices[0].message.content);
-        allSummaries.push(summaryObj);
-      }
+        // check and retrieve chat data is available in session storage
+        const storedData = sessionStorage.getItem('message_json');
+        if (!storedData) {
+          setSummary(JSON.stringify(DEFAULT_SUMMARY));
+          return;
+        }
 
-      if (allSummaries.length > 1) {
-        const combinedSummary = {
-          title: "Chat Summary (Multiple Parts)",
-          summary: allSummaries.map(s => s.summary).join('\n\n'),
-          highlights: allSummaries.flatMap(s => s.highlights),
-          sarcastic_comment: allSummaries.map(s => s.sarcastic_comment).join('\n')
-        };
-        setSummary(JSON.stringify(combinedSummary, null, 2));
-      } else {
-        setSummary(JSON.stringify(allSummaries[0], null, 2));
+        const chatData: Chat[] = JSON.parse(storedData);
+        await generateSummary(chatData);
+      } catch (error) {
+        console.error('Initialization error:', error);
+        setSummary(JSON.stringify({
+          ...DEFAULT_SUMMARY,
+          summary: "Error initializing. Please try again."
+        }));
+      } finally {
+        setLoadingState(prev => ({ ...prev, isLoading: false }));
       }
+    })();
+  }, []);
+
+  // generate summary from chat data
+  const generateSummary = async (chatData: Chat[]) => {
+    try {
+      // For this implementation, we are just messages that fit within context window
+      // batch processing to summarize entire text paused for now : current model only has context window 4096 tokens
+      const messagesInContextWindow = optimizeChatsForLLM(chatData, CONTEXT_WINDOW);
+      const totalMessages = chatData.length;
+      const summarizedMessages = messagesInContextWindow.length;
+      const percentageCovered = ((summarizedMessages / totalMessages) * 100).toFixed(1);
+
+      setLoadingState(prev => ({ 
+        ...prev, 
+        progress: `Summarizing ${summarizedMessages} messages (${percentageCovered}% of total)...` 
+      }));
+      console.log('Messages in context window:', messagesInContextWindow);
+      const chatInput = {
+        messages: messagesInContextWindow,
+        stats: {
+          total: totalMessages,
+          summarized: summarizedMessages,
+          coverage: `${percentageCovered}%`
+        }
+      };
+      console.log('Chat input:', chatInput);
+      const response = await engineRef.current.chat.completions.create({
+        messages: [
+          SYSTEM_PROMPT,
+          { role: 'user', content: JSON.stringify(chatInput.messages) }
+        ],
+        temperature: 0.1,
+        max_tokens: 800,
+        response_format: { type: "json_object" }
+      });
+      console.log('Summary response:', response);
+
+      const summaryObj = JSON.parse(response.choices[0].message.content);
+      setSummary(JSON.stringify({
+        ...summaryObj,
+      }, null, 2));
+
     } catch (error) {
-      console.error('Error generating summary:', error);
-      setSummary('Error generating summary. Please try again.');
+      console.error('Summary generation error:', error);
+      setSummary(JSON.stringify({
+        ...DEFAULT_SUMMARY,
+        title: "Error Generating Summary",
+        summary: "An error occurred while generating the summary. Please try again."
+      }));
     }
   };
 
   return (
     <div className="flex flex-col flex-grow overflow-hidden">
-      <div className="flex-grow overflow-y-auto p-2 border rounded">
-        <h2 className="text-xl font-bold mb-2">Summary:</h2>
-        {isLoading ? (
-          <div>
-            <div>{progress}</div>
-            {batchProgress && <div className="mt-2">{batchProgress}</div>}
-          </div>
+      <div className="flex-grow overflow-y-auto p-2">
+        {loadingState.isLoading ? (
+          <div className="text-[#FBFEF2]">{loadingState.progress}</div>
         ) : (
-          <pre className="whitespace-pre-wrap">{summary}</pre>
+          summary && <SummaryCard summary={summary} />
         )}
       </div>
     </div>

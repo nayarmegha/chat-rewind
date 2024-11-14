@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro'
 // import Masonry from "../components/Masonry.astro";
 import StatCard from '../components/StatCard/StatCard'
 import BiggestYapperCard from '../components/BiggestYapperCard/BiggestYapperCard'
@@ -8,134 +8,189 @@ import StreakCard from '../components/StreakCard/StreakCard'
 import ExpletivesCard from '../components/ExpletivesCard/ExpletivesCard'
 import TotalTime from '../components/TotalTimeCard/TotalTime'
 import Names from '../components/Names/Names'
-import LongestConvo from "../components/LongestConvo/LongestConvo";
-import NoTextDays from "../components/NoTextDays/NoTextDays";
-import FirstText from "../components/FirstText/FirstText";
+import LongestConvo from '../components/LongestConvo/LongestConvo'
+import NoTextDays from '../components/NoTextDays/NoTextDays'
+import FirstText from '../components/FirstText/FirstText'
 ---
 
 <Layout title="Rewind">
-  <main>
-    
-    <div class="header">
-      <h1> Here's your rewind for...</h1>
-      <Names client:load/>
-    </div>
+    <main>
+        <div class="header">
+            <h1>Here's your rewind for...</h1>
+            <Names client:load />
+        </div>
 
-    <div class="cards">
-      <section class="card">
-        <StatCard client:load/>
-      </section>
-  
-      <section class="card">
-        <BiggestYapperCard client:load/>
-      </section>
+        <div class="cards">
+            <section class="card">
+                <StatCard client:load />
+            </section>
 
-      <section class="card">
-        <FirstText client:load/>
-      </section>
-  
-      <section class="card">
-        <MissedCallsCard client:load/>
-      </section>
+            <section class="card">
+                <BiggestYapperCard client:load />
+            </section>
 
-      <section class="card">
-        <ExpletivesCard client:load/>
-      </section>
+            <section class="card">
+                <FirstText client:load />
+            </section>
 
-      <section class="card">
-        <TotalTime client:load/>
-      </section>
+            <section class="card">
+                <MissedCallsCard client:load />
+            </section>
 
-      <section class="card">
-        <NoTextDays client:load/>
-      </section>
+            <section class="card">
+                <ExpletivesCard client:load />
+            </section>
 
-      <section class="card">
-        <LongestConvo client:load/>
-      </section>
+            <section class="card">
+                <TotalTime client:load />
+            </section>
 
-      <section class="card">
-        <StreakCard client:load/>
-      </section>
-      
+            <section class="card">
+                <NoTextDays client:load />
+            </section>
 
-    </div>
-  </main>
-</Layout>
+            <section class="card">
+                <LongestConvo client:load />
+            </section>
 
-<script>
-</script>
+            <section class="card">
+                <StreakCard client:load />
+            </section>
+        </div>
 
-<style>
-  
-main {
-  display: flex;
-  flex-flow: row nowrap;
+        <div class="btn-container">
+            <p>Want more insight into your chats? Try out AI summarizer!</p>
+            <button class="btn btn-tertiary" id="summarizerBttn"
+                >Summarize My Chat</button
+            >
+        </div>
+    </main>
 
-  overflow: scroll;
-  scroll-snap-type: x mandatory;
+    <script>
+        document.getElementById('summarizerBttn').onclick = () => {
+            window.location.href = '/summarizer'
+        }
+    </script>
 
-  width: 100vw;
-  height: 100vh;
-}
+    <style>
+        main {
+            display: flex;
+            flex-flow: row nowrap;
 
-.card {
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-  scroll-margin: 0;
-  
-  height: 100vh;
-  width: 100vw;
-}
+            overflow: scroll;
+            scroll-snap-type: x mandatory;
 
-.cards {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
+            width: 100vw;
+            height: 100vh;
+        }
 
-.header {
-  text-align: center;
+        .card {
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            scroll-margin: 0;
 
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-  scroll-margin: 0;
-  flex-shrink: 0;
-  
-  width: 100vw;
-  height: 100vh;
-}
+            height: 100vh;
+            width: 100vw;
+        }
 
-@media only screen and (min-width: 721px) {
-  main {
-    display: block;
-    max-width: 1440px;
-    margin: auto;
-    height: 100vh;
-    overflow: visible; 
-  }
+        .cards {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-  .cards {
-    columns: 3 450px;
-    column-gap: 1rem;
-    display: block;
-  }
+        .header {
+            text-align: center;
 
-  .card {
-    height: auto;
-    width: auto;
-    margin-bottom: 1rem;
-    display: inline-block;
-    width: 100%;
-  }
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            scroll-margin: 0;
+            flex-shrink: 0;
 
-  .header {
-    height: auto;
-    width: 100%;
-  }
-}
+            width: 100vw;
+            height: 100vh;
+        }
 
-  /* main {
+        p {
+            font-size: 1.25rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        .btn-container {
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            scroll-margin: 0;
+            flex-shrink: 0;
+
+            text-align: center;
+
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            margin: 2rem;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-tertiary {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+
+        .btn-tertiary:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        @media only screen and (min-width: 721px) {
+            main {
+                display: block;
+                max-width: 1440px;
+                margin: auto;
+                height: 100vh;
+                overflow: visible;
+            }
+
+            .cards {
+                columns: 3 450px;
+                column-gap: 1rem;
+                display: block;
+            }
+
+            .card {
+                height: auto;
+                width: auto;
+                margin-bottom: 1rem;
+                display: inline-block;
+                width: 100%;
+            }
+
+            .header {
+                height: auto;
+                width: 100%;
+            }
+        }
+
+        /* main {
     align-items: center;
     min-height: 100vh;
     text-align: center;
@@ -221,4 +276,5 @@ main {
     font-style: italic;
     padding: 0 0.2em;
   } */
-</style>
+    </style>
+</Layout>
