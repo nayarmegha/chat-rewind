@@ -1,6 +1,6 @@
 import styles from './StatCard.module.css'
 import { useEffect, useState } from 'react'
-import blueBG from '../../assets/blueMsg.svg'
+import blueBG from '../../../assets/blueMsg.svg'
 
 const StatCard = () => {
 

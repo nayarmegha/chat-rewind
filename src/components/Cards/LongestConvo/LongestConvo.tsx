@@ -1,6 +1,6 @@
 import styles from './LongestConvo.module.css'
 import { useEffect, useState } from 'react'
-import tealbg from '../../assets/tealBG.svg'
+import tealbg from '../../../assets/tealBG.svg'
 
 const LongestConvo = () => {
 

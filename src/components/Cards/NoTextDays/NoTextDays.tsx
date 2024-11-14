@@ -1,6 +1,6 @@
 import styles from './NoTextDays.module.css'
 import { useEffect, useState } from 'react'
-import pinkBg from '../../assets/pinkNoText.svg'
+import pinkBg from '../../../assets/pinkNoText.svg'
 
 const NoTextDays = () => {
 
