@@ -95,13 +95,12 @@ const Summarizer = () => {
           SYSTEM_PROMPT,
           { role: 'user', content: JSON.stringify(chatInput) }
         ],
-        temperature: 0.5,
+        temperature: 0.1,
         max_tokens: 800,
         response_format: { type: "json_object" }
       });
-
+      console.log("Response: ", response.choices[0].message.content);
       const summaryObj = JSON.parse(response.choices[0].message.content);
-      console.log("Summary response: ", summaryObj);
       setSummary(JSON.stringify({
         ...summaryObj,
         coverage: `This summary covers the last ${summarizedMessages} messages (${percentageCovered}% of the total ${totalMessages} messages)`
