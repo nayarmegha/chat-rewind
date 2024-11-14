@@ -21,41 +21,41 @@ import FirstText from '../components/FirstText/FirstText'
         </div>
 
         <div class="cards">
-            <section class="card">
+            <div class="card">
                 <StatCard client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <BiggestYapperCard client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <FirstText client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <MissedCallsCard client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <ExpletivesCard client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <TotalTime client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <NoTextDays client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <LongestConvo client:load />
-            </section>
+            </div>
 
-            <section class="card">
+            <div class="card">
                 <StreakCard client:load />
-            </section>
+            </div>
         </div>
 
         <div class="btn-container">
@@ -123,10 +123,7 @@ import FirstText from '../components/FirstText/FirstText'
             scroll-margin: 0;
             flex-shrink: 0;
 
-            text-align: center;
-
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
 
             display: flex;
             flex-direction: column;
@@ -188,93 +185,10 @@ import FirstText from '../components/FirstText/FirstText'
                 height: auto;
                 width: 100%;
             }
+
+            .btn-container {
+                margin-top: 4rem;
+            }
         }
-
-        /* main {
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 2rem 1rem;
-    font-family: monospace;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-    border-radius: 2rem;
-  }
-
-  p {
-    font-size: 2rem;
-    padding: 0;
-    margin: 0;
-  }
-  h1 {
-    font-size: 5rem;
-    font-weight: bold;
-    background: #FBFEF2; 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .btn {
-    display: flex;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: 500;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9px;
-    transition: all 0.3s ease;
-    letter-spacing: 0.05em;
-    margin: 2rem;
-    font-family: monospace;
-  }
-
-    .btn-container {
-        justify-content: center;
-        margin: 4rem 0;
-    }
-    .btn {
-        font-size: 1.25rem;
-        font-weight: 600;
-        padding: 0.75rem 1.5rem;
-        border-radius: 9px;
-        transition: all 0.3s ease;
-        letter-spacing: 0.05em;
-        margin: 2rem;
-        font-family: monospace;
-        text-transform: uppercase;
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-primary {
-        background-color: #2dd4bf;
-    }
-
-    .btn-primary:hover {
-        background-color: #0c776b;
-    }
-
-    .btn-secondary {
-        background-color: #ec4899;
-        color: #ffffff;
-    }
-
-  .icons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .highlight {
-    background: linear-gradient(to right, #2dd4bf, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0 0.2em;
-  } */
     </style>
 </Layout>
