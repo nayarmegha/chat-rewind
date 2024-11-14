@@ -1,0 +1,61 @@
+.card {
+    background-color: #08001A;
+    border-radius: 1rem;
+    border: 0.2rem solid #FBFEF2;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.subtitle {
+    text-align: left;
+    font-size: 1.5rem;
+    color: #FBFEF2;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    text-align: left;
+    font-size: 2.5rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    text-align: left;
+    font-size: 2rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.content {
+    color: #FBFEF2;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.highlightsList {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+}
+
+.highlight {
+    color: #FBFEF2;
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
