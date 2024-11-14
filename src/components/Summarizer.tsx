@@ -101,6 +101,7 @@ const Summarizer = () => {
       });
 
       const summaryObj = JSON.parse(response.choices[0].message.content);
+      console.log("Summary response: ", summaryObj);
       setSummary(JSON.stringify({
         ...summaryObj,
         coverage: `This summary covers the last ${summarizedMessages} messages (${percentageCovered}% of the total ${totalMessages} messages)`
