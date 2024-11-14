@@ -71,6 +71,7 @@ const Summarizer = () => {
       // For this implementation, we are just messages that fit within context window
       // batch processing to summarize entire text paused for now : current model only has context window 4096 tokens
       const messagesInContextWindow = optimizeChatsForLLM(chatData, CONTEXT_WINDOW)[0];
+      console.log("Messages in context window: ", messagesInContextWindow);
       const totalMessages = chatData.length;
       const summarizedMessages = messagesInContextWindow.length;
       const percentageCovered = ((summarizedMessages / totalMessages) * 100).toFixed(1);
