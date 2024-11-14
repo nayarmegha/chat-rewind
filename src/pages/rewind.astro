@@ -57,6 +57,7 @@ import FirstText from '../components/FirstText/FirstText'
                 <StreakCard client:load />
             </section>
         </div>
+
         <div class="btn-container">
             <p>Want more insight into your chats? Try out AI summarizer!</p>
             <button class="btn btn-tertiary" id="summarizerBttn"
@@ -109,6 +110,7 @@ import FirstText from '../components/FirstText/FirstText'
             width: 100vw;
             height: 100vh;
         }
+
         p {
             font-size: 1.25rem;
             padding: 0;
@@ -116,12 +118,22 @@ import FirstText from '../components/FirstText/FirstText'
         }
 
         .btn-container {
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            scroll-margin: 0;
+            flex-shrink: 0;
+
+            text-align: center;
+
+            width: 100vw;
+            height: 100vh;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 4rem 0;
         }
+
         .btn {
             font-size: 1.25rem;
             font-weight: 600;
