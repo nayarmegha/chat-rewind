@@ -22,7 +22,8 @@
         "react-dom": "^18.3.1",
         "recharts": "^2.13.3",
         "sass-embedded": "^1.80.6",
-        "tsx": "^4.19.2"
+        "tsx": "^4.19.2",
+        "whatsapp-chat-parser": "^4.0.2"
     },
     "devDependencies": {
         "@eslint/js": "^9.13.0",
