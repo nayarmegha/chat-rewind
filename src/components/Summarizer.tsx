@@ -16,7 +16,7 @@ const DEFAULT_SUMMARY = {
 
 const SYSTEM_PROMPT = {
   role: 'system',
-  content: 'You are a chat summarizer. Summarize the WhatsApp conversation, focusing on key themes and notable exchanges. Format output as JSON: {"title": "<brief title>", "summary": "<concise story>", "highlights": ["2-3 key points"]}'
+  content: 'You are a chat summarizer. You are given a json input of format {"n": "m"} where n is the name of the sender and m is the message they sent. Summarize the WhatsApp conversation, focusing on key themes and notable exchanges. Format output as JSON: {"title": "<brief title>", "summary": "<concise story>", "highlights": ["2-3 key points"]}'
 };
 
 type LoadingState = {
