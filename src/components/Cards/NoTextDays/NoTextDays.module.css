@@ -18,18 +18,18 @@
     margin: 0;
     padding: 0;
 }
-.card {
-    background-color: #08001A;
-    border-radius: 1rem;
-    border: 0.2rem solid #FBFEF2;
-    display: flex;
-    height: 100%;
-} 
-.card-left {
+
+.statBlock {
+    background-color: white;
+    background-image: url('../../../assets/pinkNoText.svg'); 
+    background-position:'center';
+}
+
+.cardLeft {
     /* border: 0.1rem solid #a9cc3f; */
     padding: 1.5rem;
 }
-.card-right {
+.cardRight {
     /* border: 0.1rem solid #a9cc3f; */
     margin-right: 1rem;
 }

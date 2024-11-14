@@ -1,6 +1,6 @@
-import styles from './MissedCallsCard.module.css'
+import styles from './MissedCalls.module.css'
 import React, { useEffect, useState } from 'react'
-import CallsDonutChart from './CallsDonutCard'
+import CallsDonutChart from './CallsDonut'
 
 const MissedCallsCard = () => {
   const [missedVoiceCalls, setMissedVoiceCalls] = useState<number>(0)
@@ -56,20 +56,19 @@ const MissedCallsCard = () => {
   const hasMissedCalls = missedVoiceCalls > 0 || missedVideoCalls > 0
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>you missed...</h3>
-        <div className={styles['number-container']}>
-          <div className={styles['call-stat']}>
-            <h1 className={styles['number']}>{missedVoiceCalls}</h1>
-            <h2 className={styles['stat']}>voice calls</h2>
+      <div className={styles.statBlock}>
+        <h3 className={styles.desc}>you missed...</h3>
+        <div className={styles.numberContainer}>
+          <div className={styles.callStat}>
+            <h1 className={styles.number}>{missedVoiceCalls}</h1>
+            <h2 className={styles.stat}>voice calls</h2>
           </div>
-          <div className={styles['call-stat']}>
-            <h1 className={styles['number']}>{missedVideoCalls}</h1>
-            <h2 className={styles['stat']}>video calls</h2>
+          <div className={styles.callStat}>
+            <h1 className={styles.number}>{missedVideoCalls}</h1>
+            <h2 className={styles.stat}>video calls</h2>
           </div>
-          <div className={styles['call-stat']}>
-          <h3 className={styles['desc']}>out of {totalCalls} total calls.</h3>
+          <div className={styles.callStat}>
+          <h3 className={styles.desc}>out of {totalCalls} total calls.</h3>
           </div>
           {hasMissedCalls && (
             <CallsDonutChart 
@@ -77,9 +76,9 @@ const MissedCallsCard = () => {
               videoCalls={missedVideoCalls} 
               totalCalls={totalCalls}
             />
-          )}        </div>
+          )}        
+          </div>
       </div>     
-    </div>
   )
 }
 

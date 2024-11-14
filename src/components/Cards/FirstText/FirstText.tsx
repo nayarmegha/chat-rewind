@@ -44,11 +44,11 @@ const FirstText = () => {
   }
 
   return (
-    <div className={styles['card']}>
-        <h3 className={styles['desc']}>it looks like</h3>
-        <h1 className={styles['name']}>{name}</h1>
-        <h1 className={styles['stat']}>usually texts first</h1>
-        <h2 className={styles['desc']}>(not desperate)</h2>
+    <div className={styles.statBlock}>
+      <h3 className={styles.desc}>it looks like</h3>
+      <h1 className={styles.name}>{name}</h1>
+      <h1 className={styles.stat}>usually texts first</h1>
+      <h2 className={styles.desc}>(not desperate)</h2>
     </div>
    
   )

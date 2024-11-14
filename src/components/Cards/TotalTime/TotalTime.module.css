@@ -16,18 +16,16 @@
     margin: 0;
     padding: 0;
 }
-.card {
-    height: 100%;
+
+.statBlock {
     background-color: #08001A;
-    border-radius: 1rem;
-    border: 0.2rem solid #FBFEF2;
-    display: flex;
 } 
-.card-left {
+
+.cardLeft {
     /* border: 0.1rem solid #a9cc3f; */
     padding: 1.5rem;
 }
-.card-right {
+.cardRight {
     /* border: 0.1rem solid #a9cc3f; */
     margin-right: 1rem;
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './BiggestYapperCard.module.css';
+import styles from './BiggestYapper.module.css';
 import ChatDistributionBars from './ChatDistribution';
 
 const BiggestYapperCard = () => {
@@ -25,7 +25,7 @@ const BiggestYapperCard = () => {
       const sender = message.name;
       if (sender) {  // make sure there's a valid sender
         messageCounts.set(
-          sender, 
+          sender,
           (messageCounts.get(sender) || 0) + 1
         );
         totalMessages++;
@@ -33,25 +33,25 @@ const BiggestYapperCard = () => {
     }
 
     const participantsData = Array.from(messageCounts.entries())
-    .map(([name, count]) => ({
-      firstName: getFirstName(name),
-      fullName: name,
-      count,
-      percentage: Number(((count / totalMessages) * 100).toFixed(1))
-    }))
-    .sort((a, b) => b.count - a.count); // Sort by count in descending order
+      .map(([name, count]) => ({
+        firstName: getFirstName(name),
+        fullName: name,
+        count,
+        percentage: Number(((count / totalMessages) * 100).toFixed(1))
+      }))
+      .sort((a, b) => b.count - a.count); // Sort by count in descending order
 
-  // Set the biggest yapper (first in sorted array)
-  setBiggestYapper({
-    name: participantsData[0].firstName,
-    count: participantsData[0].count,
-    percentage: participantsData[0].percentage
-  });
+    // Set the biggest yapper (first in sorted array)
+    setBiggestYapper({
+      name: participantsData[0].firstName,
+      count: participantsData[0].count,
+      percentage: participantsData[0].percentage
+    });
 
-  // Set all participants data
-  setParticipants(participantsData);
-  setIsLoaded(true);
-};
+    // Set all participants data
+    setParticipants(participantsData);
+    setIsLoaded(true);
+  };
 
   useEffect(() => {
     const blob = window.sessionStorage.getItem('message_json');
@@ -64,19 +64,16 @@ const BiggestYapperCard = () => {
   }
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>biggest yapper</h3>
-        <h1 className={styles['number']}>{biggestYapper.name}</h1>
-        <h2 className={styles['stat']}>
-          {biggestYapper.count.toLocaleString()} messages
-        </h2>
-        <p className={styles['sub-stat']}>
-          ({biggestYapper.percentage}% of all messages)
-        </p>
-        <ChatDistributionBars participants={participants} />
-
-      </div>
+    <div className={styles.statBlock}>
+      <h3 className={styles.desc}>biggest yapper</h3>
+      <h1 className={styles.number}>{biggestYapper.name}</h1>
+      <h2 className={styles.stat}>
+        {biggestYapper.count.toLocaleString()} messages
+      </h2>
+      <p className={styles.subStat}>
+        ({biggestYapper.percentage}% of all messages)
+      </p>
+      <ChatDistributionBars participants={participants} />
     </div>
   );
 };

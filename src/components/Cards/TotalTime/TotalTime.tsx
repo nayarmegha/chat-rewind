@@ -39,13 +39,12 @@ const TotalTime = () => {
   }
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>Total time spent in conversation:</h3>
-        <h1 className={styles['number']}>{totalTime.toFixed(0)}</h1>
-        <h2 className={styles['stat']}>minutes</h2>
-
-        <h3 className={styles['desc']}>That's {(totalTime / 60).toFixed(1)} hours!</h3>
+    <div className={styles.statBlock}>
+      <div className={styles.cardLeft}>
+        <h3 className={styles.desc}>Total time spent in conversation:</h3>
+        <h1 className={styles.number}>{totalTime.toFixed(0)}</h1>
+        <h2 className={styles.stat}>minutes</h2>
+        <h3 className={styles.desc}>That's {(totalTime / 60).toFixed(1)} hours!</h3>
       </div>
     </div>
   );

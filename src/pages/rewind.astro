@@ -1,16 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro'
-// import Masonry from "../components/Masonry.astro";
-import StatCard from '../components/Cards/StatCard/StatCard'
-import BiggestYapperCard from '../components/Cards/BiggestYapperCard/BiggestYapperCard'
-import MissedCallsCard from '../components/Cards/MissedCallsCard/MissedCallsCard'
+import TotalMessages from '../components/Cards/TotalMessages/TotalMessages'
+import BiggestYapper from '../components/Cards/BiggestYapper/BiggestYapper'
+import MissedCallsCard from '../components/Cards/MissedCalls/MissedCalls'
 import StreakCard from '../components/Cards/StreakCard/StreakCard'
-import ExpletivesCard from '../components/Cards/ExpletivesCard/ExpletivesCard'
-import TotalTime from '../components/Cards/TotalTimeCard/TotalTime'
+import ExpletivesCard from '../components/Cards/Expletives/Expletives'
+import TotalTime from '../components/Cards/TotalTime/TotalTime'
 import Names from '../components/Names/Names'
 import LongestConvo from '../components/Cards/LongestConvo/LongestConvo'
 import NoTextDays from '../components/Cards/NoTextDays/NoTextDays'
 import FirstText from '../components/Cards/FirstText/FirstText'
+import Card from '../components/Card.astro'
 ---
 
 <Layout title="Rewind">
@@ -21,41 +21,37 @@ import FirstText from '../components/Cards/FirstText/FirstText'
         </div>
 
         <div class="cards">
-            <div class="card">
-                <StatCard client:load />
-            </div>
+            <Card>
+                <BiggestYapper client:load />
+            </Card>
+            
+            <Card>
+                <ExpletivesCard client:load/>
+            </Card>
 
-            <div class="card">
-                <BiggestYapperCard client:load />
-            </div>
+            <Card>
+                <FirstText client:load/>
+            </Card>
 
-            <div class="card">
-                <FirstText client:load />
-            </div>
+            <Card>
+                <LongestConvo client:load/>
+            </Card>
 
-            <div class="card">
-                <MissedCallsCard client:load />
-            </div>
+            <Card>
+                <MissedCallsCard client:load/>
+            </Card>
 
-            <div class="card">
-                <ExpletivesCard client:load />
-            </div>
+            <Card>
+                <NoTextDays client:load/>
+            </Card>
 
-            <div class="card">
-                <TotalTime client:load />
-            </div>
+            <Card>
+                <TotalMessages client:load/>
+            </Card>
 
-            <div class="card">
-                <NoTextDays client:load />
-            </div>
-
-            <div class="card">
-                <LongestConvo client:load />
-            </div>
-
-            <div class="card">
-                <StreakCard client:load />
-            </div>
+            <Card>
+                <TotalTime client:load/>
+            </Card>
         </div>
 
         <div class="btn-container">
@@ -84,14 +80,14 @@ import FirstText from '../components/Cards/FirstText/FirstText'
             height: 100vh;
         }
 
-        .card {
+        /* .card {
             scroll-snap-align: center;
             scroll-snap-stop: always;
             scroll-margin: 0;
 
             height: 100vh;
             width: 100vw;
-        }
+        } */
 
         .cards {
             margin: 0;
@@ -171,15 +167,17 @@ import FirstText from '../components/Cards/FirstText/FirstText'
                 columns: 3 450px;
                 column-gap: 1rem;
                 display: block;
+
+                margin: 0 1rem;
             }
 
-            .card {
+            /* .card {
                 height: auto;
                 width: auto;
                 margin-bottom: 1rem;
                 display: inline-block;
                 width: 100%;
-            }
+            } */
 
             .header {
                 height: auto;

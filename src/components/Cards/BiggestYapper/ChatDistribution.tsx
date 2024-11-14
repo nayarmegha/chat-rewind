@@ -1,4 +1,4 @@
-import styles from './BiggestYapperCard.module.css';
+import styles from './BiggestYapper.module.css';
 
 const ChatDistributionBars = ({ participants }) => {    
     return (

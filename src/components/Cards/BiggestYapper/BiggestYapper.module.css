@@ -2,6 +2,7 @@
 .desc {
     text-align: left
 }
+
 .number {
     text-align: left;
     font-size: 4rem;
@@ -9,6 +10,7 @@
     margin: 0;
     padding: 0;
 }
+
 .stat {
     text-align: left;
     font-size: 1.5rem;
@@ -16,36 +18,25 @@
     margin: 20px 0;
     padding: 0;
 }
-.card {
+
+.statBlock {
     background-color: #233c36;
-    height: 100%;
-    border-radius: 1rem;
-    border: 0.2rem solid #FBFEF2;
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    min-width: 0;
-} 
-.card-left {
-    /* border: 0.1rem solid #a9cc3f; */
     padding: 1.5rem;
     width: 100%; 
-    box-sizing: border-box; 
 }
-.card-right {
-    /* border: 0.1rem solid #a9cc3f; */
-    margin-right: 1rem;
-}
+
 .title {
     color: #FBFEF2;
 }
-.sub-stat{
+
+.subStat{
     color: #25DEC0;
     font-size: 0.9rem;
     margin: 20px 0;
     padding: 0;
     text-align: left;
 }
+
 .container {
     display: flex;
     flex-direction: column;

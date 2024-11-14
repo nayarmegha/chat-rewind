@@ -1,29 +1,36 @@
 ---
 interface Props {
-    title: string
     className?: string
 }
 
-const { title, className = '' } = Astro.props
+const {className = '' } = Astro.props
 ---
 
-<!-- If needed, this card component could be resued for the final data visualization page -->
 <div class={`card ${className}`}>
-    <h2 class="title">{title}</h2>
     <slot />
 </div>
 
 <style>
     .card {
-        background-color: #000000;
-        border-radius: 1.5rem;
-        border: 1px solid #ffffff;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        margin-bottom: 0.7rem;
+
+        border: 0.2rem solid #FBFEF2;
+        border-radius: 1rem;
+
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        scroll-margin: 0;
     }
 
-    .title {
-        color: #ffffff;
+    @media only screen and (min-width: 721px) {
+        .card {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            display: inline-block;
+            overflow: hidden;
+        }
     }
 </style>
