@@ -53,6 +53,8 @@ const MissedCallsCard = () => {
     return <div></div>
   }
 
+  const hasMissedCalls = missedVoiceCalls > 0 || missedVideoCalls > 0
+
   return (
     <div className={styles['card']}>
       <div className={styles['card-left']}>
@@ -69,8 +71,13 @@ const MissedCallsCard = () => {
           <div className={styles['call-stat']}>
           <h3 className={styles['desc']}>out of {totalCalls} total calls.</h3>
           </div>
-          <CallsDonutChart voiceCalls={missedVoiceCalls} videoCalls={missedVideoCalls} totalCalls={totalCalls}/>
-        </div>
+          {hasMissedCalls && (
+            <CallsDonutChart 
+              voiceCalls={missedVoiceCalls} 
+              videoCalls={missedVideoCalls} 
+              totalCalls={totalCalls}
+            />
+          )}        </div>
       </div>     
     </div>
   )
