@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ExpletivesCard.module.css';
+import styles from './Expletives.module.css';
 
 const ExpletivesCard = () => {
   const [topExpletive, setTopExpletive] = useState({ word: '', count: 0 });
@@ -67,14 +67,12 @@ const ExpletivesCard = () => {
   }
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>most used expletive</h3>
-        <h1 className={styles['number']}>{topExpletive.word}</h1>
-        {topExpletive.count > 0 && (
-          <h1 className={styles['stat']}> used {topExpletive.count} times 🤬</h1>
-        )}
-      </div>
+    <div className={styles.statBlock}>
+      <h3 className={styles.desc}>most used expletive</h3>
+      <h1 className={styles.number}>{topExpletive.word}</h1>
+      {topExpletive.count > 0 && (
+        <h1 className={styles.stat}> used {topExpletive.count} times 🤬</h1>
+      )}
     </div>
   );
 };

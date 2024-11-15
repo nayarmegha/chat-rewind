@@ -18,14 +18,12 @@
     margin: 0;
     padding: 0;
 }
-.card {
-    border-radius: 1rem;
-    border: 0.2rem solid #FBFEF2;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    
-} 
+
+.statBlock {
+    background-image: url('../../../assets/tealBG.svg');
+    background-position: center;
+    padding: 1.5rem;
+}
 
 .subtext {
     font-size: 2.5rem;

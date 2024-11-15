@@ -22,41 +22,32 @@
     line-height: 1.2;
 }
 
-.card {
+.statBlock {
     background: linear-gradient(
         145deg,
         rgb(99, 63, 90) 0%,
         rgba(37, 222, 192, 0.05) 100%
     );
-    height: 100%;
-    border-radius: 1rem;
-    border: 0.2rem solid #FBFEF2;
-    width: 100%;
-    box-sizing: border-box;
-    min-width: 0;
-    position: relative;
-    overflow: hidden;
-}
-.card-left {
+
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.number-container {
+.numberContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.call-stat {
+.callStat {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.number-container > :last-child {
+.numberContainer > :lastChild {
     align-self: center;
 }
 

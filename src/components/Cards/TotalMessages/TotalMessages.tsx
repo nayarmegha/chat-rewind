@@ -1,8 +1,8 @@
-import styles from './StatCard.module.css'
+import styles from './TotalMessages.module.css'
 import { useEffect, useState } from 'react'
-import blueBG from '../../assets/blueMsg.svg'
+import blueBG from '../../../assets/blueMsg.svg'
 
-const StatCard = () => {
+const TotalMessages = () => {
 
   const [texts, setTexts] = useState<number>(0)
   const [avgTexts, setAvgTexts] = useState<number>(0)
@@ -38,15 +38,15 @@ const StatCard = () => {
   }
 
   return (
-    <div className={styles['card']} style={{backgroundImage:`url(${blueBG.src})`, backgroundPosition:'center'}}>
-        <h3 className={styles['desc']}>you sent each other</h3>
-        <h1 className={styles['number']}>{texts}</h1>
-        <h1 className={styles['stat']}>messages this year</h1>
-        <h2 className={styles['desc']}>that's an average of <span style={{color:"#25DEC0", fontSize:"2rem"}}>{avgTexts}</span> texts per day!</h2>
+    <div className={styles.statBlock} style={{backgroundImage:`url(${blueBG.src})`, backgroundPosition:'center'}}>
+        <h3 className={styles.desc}>you sent each other</h3>
+        <h1 className={styles.number}>{texts}</h1>
+        <h1 className={styles.stat}>messages this year</h1>
+        <h2 className={styles.desc}>that's an average of <span style={{color:"#25DEC0", fontSize:"2rem"}}>{avgTexts}</span> texts per day!</h2>
     </div>
    
   )
 }
 
-export default StatCard
+export default TotalMessages
 

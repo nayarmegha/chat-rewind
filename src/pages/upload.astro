@@ -10,64 +10,62 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
 
 <Layout title="About | Chat Rewind">
     <main class="main">
-        <div>
-            <div class="card-container">
-                <Card title="Select your App" className="card">
-                    <div class="flex justify-center gap-4 mb-6">
-                        <button class="app-button" id="messenger">
-                            <Image
-                                src={messengerIcon}
-                                alt="Messenger"
-                                width={70}
-                                height={70}
-                            />
-                        </button>
-                        <button class="app-button" id="instagram">
-                            <Image
-                                src={instagramIcon}
-                                alt="Instagram"
-                                width={70}
-                                height={70}
-                            />
-                        </button>
-                        <button class="app-button" id="whatsapp">
-                            <Image
-                                src={whatsappIcon}
-                                alt="WhatsApp"
-                                width={70}
-                                height={70}
-                            />
-                        </button>
-                    </div>
-                    <ol class="instruction-list">
-                        <li>Open the chat you want</li>
-                        <li>Tap More options &gt; More &gt; Export chat</li>
-                        <li>Tap Include media</li>
-                        <li>Download your files</li>
-                    </ol>
-                </Card>
-
-                <Card title="Upload Zip File" className="card">
-                    <div class="flex justify-center gap-4 mb-6">
-                        <!-- upload zip -->
-                        <button
-                            id="file-input-button"
-                            class="btn btn-secondary btn-secondary:hover"
-                        >
-                            Upload!
-                        </button>
-                        <input
-                            type="file"
-                            id="file-input"
-                            accept="application/zip"
-                            hidden
+        <div class="card-container">
+            <Card title="Select your App" className="card">
+                <div class="flex justify-center gap-4 mb-6 mt-6">
+                    <button class="app-button" id="messenger">
+                        <Image
+                            src={messengerIcon}
+                            alt="Messenger"
+                            width={70}
+                            height={70}
                         />
-                    </div>
-                </Card>
-            </div>
-            <div class="back-bttn">
-                <button class="btn btn-tertiary" id="backBttn">&lt;&lt;</button>
-            </div>
+                    </button>
+                    <button class="app-button" id="instagram">
+                        <Image
+                            src={instagramIcon}
+                            alt="Instagram"
+                            width={70}
+                            height={70}
+                        />
+                    </button>
+                    <button class="app-button" id="whatsapp">
+                        <Image
+                            src={whatsappIcon}
+                            alt="WhatsApp"
+                            width={70}
+                            height={70}
+                        />
+                    </button>
+                </div>
+                <ol class="instruction-list">
+                    <li>Open the chat you want</li>
+                    <li>Tap More options &gt; More &gt; Export chat</li>
+                    <li>Tap Include media</li>
+                    <li>Download your files</li>
+                </ol>
+            </Card>
+
+            <Card title="Upload Zip File" className="card">
+                <div class="flex justify-center gap-4 mb-6">
+                    <!-- upload zip -->
+                    <button
+                        id="file-input-button"
+                        class="btn btn-secondary btn-secondary:hover"
+                    >
+                        Upload!
+                    </button>
+                    <input
+                        type="file"
+                        id="file-input"
+                        accept="application/zip"
+                        hidden
+                    />
+                </div>
+            </Card>
+        </div>
+        <div class="back-bttn">
+            <button class="btn btn-tertiary" id="backBttn">&lt;&lt;</button>
         </div>
     </main>
 </Layout>
@@ -139,9 +137,10 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
     .card-container {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+
         gap: 2rem;
-        width: 100%;
-        max-width: 1200px;
+        width: 100vw;
         margin-bottom: 2rem;
     }
 
@@ -151,19 +150,15 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
         }
     }
 
-    .card {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
     .back-bttn {
         width: 100%;
         display: flex;
         justify-content: flex-end;
         margin-top: 2rem;
     }
+
     .btn {
+        margin-top: 1.5rem;
         font-size: 1rem;
         font-weight: 600;
         padding: 0.75rem 1.5rem;
@@ -195,7 +190,9 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
 
     .instruction-list {
         text-align: left;
+        padding: 1.5rem;
     }
+
     .app-button {
         background: none;
         border: 2px solid transparent;

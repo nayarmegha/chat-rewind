@@ -1,35 +1,31 @@
 
 .desc {
-    text-align: left;
-    color: #08001A;
-    font-size: 1.5rem;
+    text-align: left
 }
 .number {
     text-align: left;
     font-size: 5rem;
-    color: #ce19a7;
+    color: #25DEC0;
     margin: 0;
     padding: 0;
 }
 .stat {
     text-align: left;
     font-size: 2.5rem;
-    color: #08001A;
+    color: #E52082;
     margin: 0;
     padding: 0;
 }
-.card {
+
+.statBlock {
     background-color: #08001A;
-    border-radius: 1rem;
-    border: 0.2rem solid #FBFEF2;
-    display: flex;
-    height: 100%;
 } 
-.card-left {
+
+.cardLeft {
     /* border: 0.1rem solid #a9cc3f; */
     padding: 1.5rem;
 }
-.card-right {
+.cardRight {
     /* border: 0.1rem solid #a9cc3f; */
     margin-right: 1rem;
 }
