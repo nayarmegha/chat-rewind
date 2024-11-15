@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import styles from './TotalTime.module.css';
-
+import type { newChat } from '../../../utils/types';
 
 const TotalTime = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [totalTime, setTotalTime] = useState<number>(0);
 
-  const getTotalTime = (jsonData) => {
+  const getTotalTime = (jsonData: newChat[]) => {
+
     let totalDuration = 0 
-    let startTime = new Date(jsonData[0]['date'])
-    let prevTime =  new Date(jsonData[0]['date'])
+    let prevTime: Date =  new Date(jsonData[0].date)
+
     // script to find number of minutes of longest conversation
-    for (const key in jsonData) {
-      const currTime = new Date(jsonData[key]['date'])
+    for (const msg of jsonData) {
+      let currTime: Date = new Date(msg.date)
+
       // more than 30 minutes passed, different as the same conversation
-      if (currTime.getTime() - prevTime.getTime() > (1000 * 60 * 30)) {
-        const currDuration = (prevTime.getTime() - startTime.getTime()) / (1000 * 60)
+      if ((currTime.getTime() - prevTime.getTime()) < (1000 * 60 * 30)) {
+        const currDuration = (currTime.getTime() - prevTime.getTime()) / (1000 * 60)
         totalDuration += currDuration
 
-        startTime = currTime
-        prevTime = currTime
+        console.log(currDuration)
+        console.log(`${currTime} => ${prevTime}`)
+
       }
-      else {
-        prevTime = currTime
-      }
+
+      prevTime = currTime
     }
 
     setTotalTime(totalDuration)
