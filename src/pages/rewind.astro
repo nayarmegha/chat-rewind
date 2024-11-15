@@ -11,6 +11,8 @@ import LongestConvo from '../components/Cards/LongestConvo/LongestConvo'
 import NoTextDays from '../components/Cards/NoTextDays/NoTextDays'
 import FirstText from '../components/Cards/FirstText/FirstText'
 import StatCard from '../components/StatCard.astro'
+import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
+// import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
 ---
 
 <Layout title="Rewind">
@@ -55,6 +57,10 @@ import StatCard from '../components/StatCard.astro'
 
             <StatCard>
                 <TotalTime client:load/>
+            </StatCard>
+
+            <StatCard>
+                <MostUsedEmojis client:load/>
             </StatCard>
         </div>
 
