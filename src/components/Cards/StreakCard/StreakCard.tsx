@@ -70,12 +70,12 @@ const StreakCard = () => {
   }
 
   return (
-    <div className={styles['card']}>
-      <div className={styles['card-left']}>
-        <h3 className={styles['desc']}>longest streak</h3>
-        <h1 className={styles['number']}>{state.longestStreak}</h1>
-        <h2 className={styles['stat']}>consecutive days</h2>
-        <p className={styles['sub-stat']}>
+    <div className={styles.statBlock}>
+      <div className={styles.cardLeft}>
+        <h3 className={styles.desc}>longest streak</h3>
+        <h1 className={styles.number}>{state.longestStreak}</h1>
+        <h2 className={styles.stat}>consecutive days</h2>
+        <p className={styles.subStat}>
           {state.startDate.toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',
@@ -89,7 +89,7 @@ const StreakCard = () => {
         <StreakBar 
           streakDays={state.longestStreak} 
           totalDays={state.totalDays}/>
-        <h3 className={styles['desc']}>out of {state.totalDays} days.</h3>
+        <h3 className={styles.desc}>out of {state.totalDays} days.</h3>
       </div>
     </div>
   );
