@@ -10,7 +10,7 @@ import Names from '../components/Names/Names'
 import LongestConvo from '../components/Cards/LongestConvo/LongestConvo'
 import NoTextDays from '../components/Cards/NoTextDays/NoTextDays'
 import FirstText from '../components/Cards/FirstText/FirstText'
-import Card from '../components/Card.astro'
+import StatCard from '../components/StatCard.astro'
 ---
 
 <Layout title="Rewind">
@@ -21,37 +21,37 @@ import Card from '../components/Card.astro'
         </div>
 
         <div class="cards">
-            <Card>
+            <StatCard>
                 <BiggestYapper client:load />
-            </Card>
+            </StatCard>
             
-            <Card>
+            <StatCard>
                 <ExpletivesCard client:load/>
-            </Card>
+            </StatCard>
 
-            <Card>
+            <StatCard>
                 <FirstText client:load/>
-            </Card>
+            </StatCard>
 
-            <Card>
+            <StatCard>
                 <LongestConvo client:load/>
-            </Card>
+            </StatCard>
 
-            <Card>
+            <StatCard>
                 <MissedCallsCard client:load/>
-            </Card>
+            </StatCard>
 
-            <Card>
+            <StatCard>
                 <NoTextDays client:load/>
-            </Card>
+            </StatCard>
 
-            <Card>
+            <StatCard>
                 <TotalMessages client:load/>
-            </Card>
+            </StatCard>
 
-            <Card>
+            <StatCard>
                 <TotalTime client:load/>
-            </Card>
+            </StatCard>
         </div>
 
         <div class="btn-container">
