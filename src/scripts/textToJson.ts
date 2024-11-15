@@ -32,6 +32,9 @@ function convertFormat(messages: oldChat[]) {
         convertedJSON.push(newMsg)
     }
 
+    // make sure all messages are in order (yes we have to do this)
+    convertedJSON.sort((a, b) => a.date.getTime() - b.date.getTime())
+
     return convertedJSON
 }
 
