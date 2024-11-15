@@ -1,0 +1,28 @@
+
+.statBlock {
+    background-color: #08001A;
+    padding: 1.5rem;
+} 
+
+.stat {
+    text-align: left;
+    font-size: 2rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+}
+
+.desc {
+    text-align: left;
+    font-size: 1.5rem;
+    color: #FBFEF2;
+    padding: 0.25rem;
+}
+
+.number {
+    text-align: left;
+    font-size: 5rem;
+    color: #25DEC0;
+    margin: 0;
+    padding: 0;
+}
