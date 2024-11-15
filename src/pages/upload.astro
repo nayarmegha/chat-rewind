@@ -13,21 +13,24 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
         <div>
             <div class="card-container">
                 <Card title="Select your App" className="card">
+                    <h2>Note : Current functionality for Whatsapp alone</h2>
                     <div class="flex justify-center gap-4 mb-6">
-                        <button class="app-button" id="messenger">
+                        <button class="app-button" id="messenger" disabled>
                             <Image
                                 src={messengerIcon}
                                 alt="Messenger"
                                 width={70}
                                 height={70}
+                                style={{opacity:"0.3"}}
                             />
                         </button>
-                        <button class="app-button" id="instagram">
+                        <button class="app-button" id="instagram" disabled>
                             <Image
                                 src={instagramIcon}
                                 alt="Instagram"
                                 width={70}
                                 height={70}
+                                style={{opacity:"0.3"}}
                             />
                         </button>
                         <button class="app-button" id="whatsapp">
@@ -40,10 +43,10 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
                         </button>
                     </div>
                     <ol class="instruction-list">
-                        <li>Open the chat you want</li>
+                        <li>On your Android/iPhone, Open the chat you want </li>
                         <li>Tap More options &gt; More &gt; Export chat</li>
-                        <li>Tap Include media</li>
-                        <li>Download your files</li>
+                        <li>Tap Without media</li>
+                        <li>Download your files and upload!</li>
                     </ol>
                 </Card>
 
@@ -171,6 +174,7 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
         transition: all 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        margin: 1.5rem;
     }
 
     .btn-secondary {
@@ -195,6 +199,7 @@ import whatsappIcon from '../assets/whatsapp-icon2.svg'
 
     .instruction-list {
         text-align: left;
+        padding: 2rem;
     }
     .app-button {
         background: none;
