@@ -13,15 +13,12 @@ const TotalTime = () => {
 
     // script to find number of minutes of longest conversation
     for (const msg of jsonData) {
-      let currTime: Date = new Date(msg.date)
+      const currTime: Date = new Date(msg.date)
 
       // more than 30 minutes passed, different as the same conversation
       if ((currTime.getTime() - prevTime.getTime()) < (1000 * 60 * 30)) {
         const currDuration = (currTime.getTime() - prevTime.getTime()) / (1000 * 60)
         totalDuration += currDuration
-
-        console.log(currDuration)
-        console.log(`${currTime} => ${prevTime}`)
 
       }
 
