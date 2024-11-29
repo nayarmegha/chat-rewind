@@ -63,6 +63,7 @@ const Summarizer = () => {
         }
 
         const chatData: Chat[] = JSON.parse(storedData);
+        console.log('Chat data:', chatData);
         await generateSummary(chatData);
       } catch (error) {
         console.error('Initialization error:', error);
@@ -99,19 +100,21 @@ const Summarizer = () => {
           coverage: `${percentageCovered}%`
         }
       };
-      console.log('Chat input:', chatInput);
+      console.log('Chat input:', chatInput.messages);
       const response = await engineRef.current.chat.completions.create({
         messages: [
           SYSTEM_PROMPT,
           { role: 'user', content: JSON.stringify(chatInput.messages) }
         ],
         temperature: 0.1,
-        max_tokens: 800,
+        frequency_penalty: 1.0,
+        max_completion_tokens: 400,
         response_format: { type: "json_object" }
       });
-      console.log('Summary response:', response);
+      console.log('Summary response:', response.choices[0].message.content);
 
       const summaryObj = JSON.parse(response.choices[0].message.content);
+      
       setSummary(JSON.stringify({
         ...summaryObj,
       }, null, 2));
