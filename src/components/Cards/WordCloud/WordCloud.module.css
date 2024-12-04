@@ -1,0 +1,27 @@
+.desc {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #FBFEF2;
+}
+
+.statBlock {
+    background: linear-gradient(
+        145deg,
+        rgb(99, 63, 90) 0%,
+        rgba(37, 222, 192, 0.05) 100%
+    );
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;  
+}
+
+.cloudContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;  
+    position: relative;
+}
