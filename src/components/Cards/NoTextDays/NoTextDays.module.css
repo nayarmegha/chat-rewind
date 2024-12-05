@@ -22,7 +22,7 @@
 .statBlock {
     background-color: white;
     background-image: url('../../../assets/pinkNoText.svg'); 
-    background-position:'center';
+    background-position:'left';
 }
 
 .cardLeft {

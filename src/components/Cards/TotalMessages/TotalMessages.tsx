@@ -38,7 +38,7 @@ const TotalMessages = () => {
   }
 
   return (
-    <div className={styles.statBlock} style={{backgroundImage:`url(${blueBG.src})`, backgroundPosition:'center'}}>
+    <div className={styles.statBlock}>
         <h3 className={styles.desc}>you sent each other</h3>
         <h1 className={styles.number}>{texts}</h1>
         <h1 className={styles.stat}>messages this year</h1>
