@@ -51,25 +51,11 @@
 <br  />
 
 <div  align="center">
-
-  
-
 <p  align="center">
 
 chat-rewind is a Spotify-like wrapped for all your chats where your data never leaves your browser.
-
-<br  />
-
-<a  href="[https://github.com/nayarmegha/chat-rewind]"><strong>Explore the docs »</strong></a>
-
-<br  />
-
-</p>
-
 </div>
-
-  
-  
+<br  />
   
 
 <!-- TABLE OF CONTENTS -->
