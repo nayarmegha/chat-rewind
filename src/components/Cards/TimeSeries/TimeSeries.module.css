@@ -1,0 +1,13 @@
+.desc {
+    text-align: center;
+    font-size: 1.7rem;
+}
+.statBlock {
+    padding: 1.5rem;
+    background: linear-gradient(
+        145deg,
+        rgb(170, 166, 199, 0.5) 0%,
+        rgba(28, 226, 193, 0.01) 100%
+    );
+
+}

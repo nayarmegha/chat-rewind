@@ -1,7 +1,7 @@
 
 .desc {
     text-align: center;
-    color: #08001A;
+    color: #f8f0f0;
     font-size: 1.5rem;
 }
 .number {
@@ -14,14 +14,17 @@
 .stat {
     text-align: center;
     font-size: 2.5rem;
-    color: #08001A;
+    color: #f8f0f0;
     margin: 0;
     padding: 0;
 }
 
 .statBlock {
-    background-image: url('../../../assets/tealBG.svg');
-    background-position: center;
+    background: linear-gradient(
+        145deg,
+        rgb(37, 222, 192, 0.8) 0%,
+        rgba(28, 226, 193, 0.01) 100%
+    );
     padding: 1.5rem;
 }
 

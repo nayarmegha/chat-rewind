@@ -10,8 +10,10 @@ import Names from '../components/Names/Names'
 import LongestConvo from '../components/Cards/LongestConvo/LongestConvo'
 import NoTextDays from '../components/Cards/NoTextDays/NoTextDays'
 import FirstText from '../components/Cards/FirstText/FirstText'
+import TimeSeries from '../components/Cards/TimeSeries/TimeSeries'
 import StatCard from '../components/StatCard.astro'
 import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
+import MonthChart from '../components/Cards/MonthChart/MonthChart'
 // import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
 import WordCloudCard from '../components/Cards/WordCloud/WordCloud'
 ---
@@ -25,7 +27,15 @@ import WordCloudCard from '../components/Cards/WordCloud/WordCloud'
 
         <div class="cards">
             <StatCard>
+                <TimeSeries client:load/>
+            </StatCard>
+            
+            <StatCard>
                 <BiggestYapper client:load />
+            </StatCard>
+            
+            <StatCard>
+                <MonthChart client:load/>
             </StatCard>
 
             <StatCard>

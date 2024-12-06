@@ -14,12 +14,14 @@ const WordCloudCard = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const excludeWords = new Set([
+    'video', 'omitted', 'image', 'answer', 'audio', 'deleted', 'missed',
     'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i', 
     'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
     'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 
     'she', 'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there',
     'their', 'what', 'so', 'up', 'out', 'if', 'about', 'who', 'get',
-    'which', 'go', 'me', 'is', 'was', 'just', 'like', 'can', 'into'
+    'which', 'go', 'me', 'is', 'was', 'just', 'like', 'can', 'into',
+    'did', 'very'
   ]);
 
   const findTopWords = (jsonData: Record<string, { content: { text: string } }>) => {
@@ -33,7 +35,7 @@ const WordCloudCard = () => {
         for (let word of words) {
           word = word.replace(/[.,!?'"()]/g, '');
           
-          if (word.length < 3 || excludeWords.has(word) || /^\d+$/.test(word)) {
+          if (word.length < 6 || excludeWords.has(word) || /^\d+$/.test(word)) {
             continue;
           }
 
@@ -48,6 +50,7 @@ const WordCloudCard = () => {
       .slice(0,30);
 
     setWords(wordcloudData);
+    console.log(wordcloudData)
     setIsLoaded(true);
   };
 
