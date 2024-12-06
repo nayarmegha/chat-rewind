@@ -13,6 +13,7 @@ import FirstText from '../components/Cards/FirstText/FirstText'
 import TimeSeries from '../components/Cards/TimeSeries/TimeSeries'
 import StatCard from '../components/StatCard.astro'
 import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
+import MonthChart from '../components/Cards/MonthChart/MonthChart'
 // import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
 ---
 
@@ -32,6 +33,10 @@ import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
                 <BiggestYapper client:load />
             </StatCard>
             
+            <StatCard>
+                <MonthChart client:load/>
+            </StatCard>
+
             <StatCard>
                 <ExpletivesCard client:load/>
             </StatCard>
