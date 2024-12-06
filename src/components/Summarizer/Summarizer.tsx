@@ -4,7 +4,7 @@ import type { Chat } from '../../scripts/jsonToLLM.ts';
 import { optimizeChatsForLLM } from '../../scripts/jsonToLLM.ts';
 import SummaryCard from './SummaryCard';
 
-const CONTEXT_WINDOW = 2500; // setting a conservative context window (max no of tokens the model can process at once)
+const CONTEXT_WINDOW = 3800; // setting a conservative context window (max no of tokens the model can process at once)
 const MODEL_NAME = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC";
 
 const DEFAULT_SUMMARY = {
