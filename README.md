@@ -40,16 +40,9 @@
 -->
 
 [![Contributors][contributors-shield]][contributors-url]
-
 [![Forks][forks-shield]][forks-url]
-
 [![Stargazers][stars-shield]][stars-url]
-
 [![Issues][issues-shield]][issues-url]
-
-[![MIT License][license-shield]][license-url]
-
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
   
 
@@ -230,18 +223,6 @@ npm run dev
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
   
-  
-  
-
-<!-- USAGE EXAMPLES -->
-
-##  Usage
-
-
-
- 
-
-  
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
@@ -264,25 +245,25 @@ npm run dev
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]:  https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]:  https://img.shields.io/github/contributors/nayarmegha/chat-rewind.svg?style=for-the-badge
 
-[contributors-url]:  https://github.com/github_username/repo_name/graphs/contributors
+[contributors-url]:  https://github.com/nayarmegha/chat-rewind/graphs/contributors
 
-[forks-shield]:  https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]:  https://img.shields.io/github/forks/nayarmegha/chat-rewind.svg?style=for-the-badge
 
-[forks-url]:  https://github.com/github_username/repo_name/network/members
+[forks-url]:  https://github.com/nayarmegha/chat-rewind/network/members
 
-[stars-shield]:  https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]:  https://img.shields.io/github/stars/nayarmegha/chat-rewind.svg?style=for-the-badge
 
-[stars-url]:  https://github.com/github_username/repo_name/stargazers
+[stars-url]:  https://github.com/nayarmegha/chat-rewind/stargazers
 
-[issues-shield]:  https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]:  https://img.shields.io/github/issues/nayarmegha/chat-rewind.svg?style=for-the-badge
 
-[issues-url]:  https://github.com/github_username/repo_name/issues
+[issues-url]:  https://github.com/nayarmegha/chat-rewind/issues
 
-[license-shield]:  https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]:  https://img.shields.io/github/license/nayarmegha/chat-rewind.svg?style=for-the-badge
 
-[license-url]:  https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[license-url]:  https://github.com/nayarmegha/chat-rewind/blob/master/LICENSE.txt
 
 [linkedin-shield]:  https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
