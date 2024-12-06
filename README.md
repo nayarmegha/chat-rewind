@@ -106,16 +106,6 @@ chat-rewind is a Spotify-like wrapped for all your chats where your data never l
 
 </li>
 
-<li><a  href="#usage">Usage</a></li>
-
-<li><a  href="#roadmap">Roadmap</a></li>
-
-<li><a  href="#contributing">Contributing</a></li>
-
-<li><a  href="#license">License</a></li>
-
-<li><a  href="#contact">Contact</a></li>
-
 <li><a  href="#acknowledgments">Acknowledgments</a></li>
 
 </ol>
@@ -173,24 +163,16 @@ Key Features include:
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
-  ##  Getting Started
-All pages are written in [Astro](https://astro.build/), a JavaScript web framework optimized for building fast, content-driven websites. and all data cards and scripts are written in [React](https://react.dev/), a library for web and native user interfaces. The AI Summarizer component was built using [WebLLM](https://webllm.mlc.ai/) for in browser inference and the Model in particular is [Qwen](https://huggingface.co/Qwen).
-  
-
 <!-- GETTING STARTED -->
 
 ##  Getting Started
-
+All pages are written in [Astro](https://astro.build/), a JavaScript web framework optimized for building fast, content-driven websites. and all data cards and scripts are written in [React](https://react.dev/), a library for web and native user interfaces. The AI Summarizer component was built using [WebLLM](https://webllm.mlc.ai/) for in browser inference and the Model in particular is [Qwen](https://huggingface.co/Qwen).
   
 
 ###  Prerequisites
 
-  
-
 Need to have npm installed
 
-
-  
 
 ###  Installation
 
