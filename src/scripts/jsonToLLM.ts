@@ -16,63 +16,34 @@ export interface OptimizedMessage {
   m: string;    // message content
 }
 
-export function optimizeChatsForLLM(chats: Chat[], tokenLimit: number = 30000): OptimizedMessage[] {
-  // takes an array of Chat objects and returns a 2D array of optimized messages.
-  // const optimizedMessages = chats
-  //   .filter(chat => chat.content.text.trim() !== '')  // remove empty messages
-  //   .map(chat => ({
-  //     n: chat.name.trim(),
-  //     m: chat.content.text.trim()
-  // }));
+export function optimizeChatsForLLM(chats: Chat[], tokenLimit: number = 4096): OptimizedMessage[] {
   const optimizedMessages: OptimizedMessage[] = [];
   let currentTokenCount = 0;
-  console.log("Optimized messages: ", optimizedMessages);
   
-  // batch messages
-  // when tokens > 8k, split into multiple batches
-  // qwen 1.5B can handle 32k tokens in its context window...but setting it to 32k will increase client side processing time
-  // a better solution is implementing batching - split into multiple batches of 8k tokens and summarize each batch
-  // we could use this two ways:
-      // 1. display each batch summary in a card as they are processed
-      // 2. combine all batches into a single summary...this doesnt make sense if we want to make the process faster for the user.
-      // 3. 
-
-  // const batches: OptimizedMessage[][] = []; // holds all batches
-  // let currentBatch: OptimizedMessage[] = []; // current batch being built
-  // let currentTokenCount = 0; // token count for current batch
-
-  // one word can be about 2-3 tokens...so we can estimate the number of tokens by dividing the length of the string by 4
-  // overestimating by using 4 here just to be safe
+  // reserve tokens for system prompt and JSON structure
+  const SYSTEM_PROMPT_TOKENS = 150;
+  const JSON_STRUCTURE_TOKENS = 50;
+  const SAFETY_MARGIN = 0.9; // Use 90% of limit for safety
+  
+  // calculate actual available tokens for messages
+  const availableTokens = Math.floor((tokenLimit * SAFETY_MARGIN)) - SYSTEM_PROMPT_TOKENS - JSON_STRUCTURE_TOKENS;
+  
+  // still using string length but with better multipliers
   const estimateTokens = (message: OptimizedMessage): number => {
-    return Math.ceil(JSON.stringify(message).length / 4);
-  };
-  
-  // eatimate tokens for each message in OptimizedMessage
-  // if adding message exceeds token limit, push current batch to batches and start a new batch
-
-  // for (const message of optimizedMessages) {
-  //   const messageTokens = estimateTokens(message);
+    const messageStr = JSON.stringify(message);
+    const specialChars = (messageStr.match(/[^\w\s]/g) || []).length;
+    const words = messageStr.split(/\s+/).length;
     
-  //   if (currentTokenCount + messageTokens > tokenLimit) {
-  //     if (currentBatch.length > 0) {
-  //       batches.push(currentBatch);
-  //     }
-  //     currentBatch = [message];
-  //     currentTokenCount = messageTokens;
-  //   } else {
-  //     currentBatch.push(message);
-  //     currentTokenCount += messageTokens;
-  //   }
-  // }
-  
-  // push the last batch
-  // if (currentBatch.length > 0) {
-  //   batches.push(currentBatch);
-  // }
+    // base estimation using character length
+    const baseTokens = Math.ceil(messageStr.length / 4);
+    // add extra tokens for special characters and word boundaries
+    const extraTokens = Math.ceil((specialChars * 0.5) + (words * 0.5));
+    
+    return baseTokens + extraTokens;
+  };
 
   // process messages until we hit the token limit
   for (const chat of chats) {
-    
     if (chat.content.text.trim() === '') continue;
 
     const message: OptimizedMessage = {
@@ -82,18 +53,20 @@ export function optimizeChatsForLLM(chats: Chat[], tokenLimit: number = 30000): 
 
     const messageTokens = estimateTokens(message);
 
-    // If adding this message would exceed the token limit, stop processing
-    if (currentTokenCount + messageTokens > tokenLimit) {
+    // if adding this message would exceed the available tokens, stop processing
+    if (currentTokenCount + messageTokens > availableTokens) {
+      console.log(`Reached token limit. Stopping at ${currentTokenCount}/${availableTokens} available tokens`);
       break;
     }
 
-    // Add message and update token count
+    // add message and update token count
     optimizedMessages.push(message);
     currentTokenCount += messageTokens;
   }
-  console.log(`Total messages: ${optimizedMessages.length}`);
-  console.log(`Estimated total tokens: ${Math.ceil(JSON.stringify(optimizedMessages).length / 4)}`);
-  console.log("Optimized messages: ", optimizedMessages);
-  //return batches;
+
+  console.log(`Total messages: ${optimizedMessages.length}/${chats.length}`);
+  console.log(`Estimated total tokens: ${currentTokenCount}/${availableTokens}`);
+  console.log(`Safety margin tokens remaining: ${availableTokens - currentTokenCount}`);
+  
   return optimizedMessages;
 }
