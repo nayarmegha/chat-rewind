@@ -138,7 +138,7 @@ Key Features include:
 
 * All scripts and cards loaded in browser where your data is secure since it's purely frontend
 
-  
+In browser AI Summarizer was an experimental feature we tried to work on and found some interesting results within the in browser LLM space and our own successes as well as limitations. More information on this can be found [here](https://docs.google.com/document/d/1K1A53-LPi7SbWrDTLjdy9eu0pzfS0EKE6kVRq_fn8WY/edit?usp=sharing).
   
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
