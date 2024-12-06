@@ -15,6 +15,7 @@ import StatCard from '../components/StatCard.astro'
 import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
 import MonthChart from '../components/Cards/MonthChart/MonthChart'
 // import MostUsedEmojis from '../components/Cards/MostUsedEmojis/MostUsedEmojis'
+import WordCloudCard from '../components/Cards/WordCloud/WordCloud'
 ---
 
 <Layout title="Rewind">
@@ -38,39 +39,43 @@ import MonthChart from '../components/Cards/MonthChart/MonthChart'
             </StatCard>
 
             <StatCard>
-                <ExpletivesCard client:load/>
+                <ExpletivesCard client:load />
             </StatCard>
 
             <StatCard>
-                <FirstText client:load/>
+                <FirstText client:load />
             </StatCard>
 
             <StatCard>
-                <LongestConvo client:load/>
+                <LongestConvo client:load />
             </StatCard>
 
             <StatCard>
-                <MissedCallsCard client:load/>
+                <MissedCallsCard client:load />
             </StatCard>
 
             <StatCard>
-                <NoTextDays client:load/>
+                <NoTextDays client:load />
             </StatCard>
 
             <StatCard>
-                <TotalMessages client:load/>
+                <TotalMessages client:load />
             </StatCard>
 
             <StatCard>
-                <StreakCard client:load/>
+                <StreakCard client:load />
             </StatCard>
 
             <StatCard>
-                <TotalTime client:load/>
+                <TotalTime client:load />
             </StatCard>
 
             <StatCard>
-                <MostUsedEmojis client:load/>
+                <MostUsedEmojis client:load />
+            </StatCard>
+
+            <StatCard>
+                <WordCloudCard client:load />
             </StatCard>
         </div>
 
